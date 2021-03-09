@@ -10,23 +10,23 @@ Same Name, Same Institution, Same Abbreviation
 ## Processing
 PACS code as the topic.
 
-### Staitic Indicators
+## Staitic Indicators
 
-Independent indicators:
+#### Independent indicators:
 
     1. Unique number of Topic.
     2. Number of papers under same topic, Mean, Max
     3. Diversity of topics.
     4. Persistance.
 
-Dependent indicators:
+#### Dependent indicators:
    
     1. Productivity
     2. Hindex
     3. Total number of citations.
     4. etc.
 
-### Dynamic Indicators
+## Dynamic Indicators
 
 #### Topic sequence example:
 
