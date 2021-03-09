@@ -38,6 +38,8 @@ import six
 from scipy.stats import lognorm
 import scipy
 
+from gini import *
+
 
 
 # from gini import gini

@@ -8,6 +8,11 @@ APS_PROJECT_PATH = 'F:\\APS_data_processing'
 
 def APS_PCASCODE_process():
 
+    paper_year = json.loads(
+        open(APS_PROJECT_PATH + '\\data\\pid_pubyear.json').read())
+
+    topic_year_num = defaultdict(lambda: defaultdict(int))
+
     paper_topic = {}
     for line in open('G:\\APS\\PCAS.txt', encoding='utf-8'):
 
@@ -27,9 +32,13 @@ def APS_PCASCODE_process():
                 continue
 
             # 只保留一级主题
-            codes.append(code.split('.')[0])
+            codes.append(code.split('.')[0].split(' ')[-1])
 
         topic = codes[np.random.randint(0, len(codes))]
+
+        year = paper_year.get(doi, -1)
+
+        topic_year_num[topic][year] += 1
 
         paper_topic[doi] = topic
 
@@ -39,6 +48,8 @@ def APS_PCASCODE_process():
          'w').write(json.dumps(paper_topic))
 
     logging.info('paper topic saved.')
+
+    open('data/topic_year_num.json', 'w').write(json.dumps(topic_year_num))
 
 
 # 根据作者的论文数量对作者进行过滤
@@ -55,6 +66,9 @@ def filter_author_by_papernum(min=5, max=100, plot_distribution=True):
     paper_topic = json.loads(
         open(APS_PROJECT_PATH + '\\data\\paper_topic.json').read())
 
+    paper_cn = json.loads(
+        open(APS_PROJECT_PATH + '\\data\\pid_cn.json').read())
+
     logging.info('starting to stat ...')
     author_topics = {}
 
@@ -65,17 +79,24 @@ def filter_author_by_papernum(min=5, max=100, plot_distribution=True):
         if papernum < min or papernum > max:
             continue
 
-        year_papaers = author_year_papers[author]
+        year_papers = author_year_papers[author]
 
         topics = []
-        for year in sorted(year_papaers, key=lambda x: int(x)):
+        cns = []
+        years = []
+        for year in sorted(year_papers, key=lambda x: int(x)):
 
-            for paper in year_papaers[year]:
+            for paper in year_papers[year]:
                 topic = paper_topic.get(paper, None)
                 if topic is not None:
                     topics.append(topic)
+                    cns.append(paper_cn.get(paper, 0))
+                    years.append(year)
 
-        author_topics[author] = topics
+        if len(topics) < 5:
+            continue
+
+        author_topics[author] = [topics, cns, years]
 
     open('data/author_topics.json', 'w').write(json.dumps(author_topics))
 
@@ -109,7 +130,83 @@ def filter_author_by_papernum(min=5, max=100, plot_distribution=True):
         'Author paper num distribution saved to fig/author_pnum_dis.png.')
 
 
+# 生成用于本文数据分析的静态指标
+# author, hindex, productivity, total number of citations, unique number of topics, MaxNumber under one topic, Diversity, Persistance
+def generate_static_data():
+    logging.info('loading data ...')
+    author_topics = json.loads(open('data/author_topics.json').read())
+    topic_year_num = json.loads(open('data/topic_year_num.json').read())
+    lines = [
+        'author,hindex,productivity,TNC,ANC,UNT,PNUOT,MAX PNUOT,MEAN PNUOT,diversity,persistance'
+    ]
+
+    author_trans_data = {}
+    for author in author_topics:
+
+        topics, cns, years = author_topics[author]
+
+        topic_counter = Counter(topics)
+
+        values = list(topic_counter.values())
+
+        hindex = Hindex(cns)
+        prod = len(topics)
+        tnc = np.sum(cns)
+        anc = np.sum(cns)
+        unt = len(set(topics))
+        diversity = gini(values)
+        PNUOT = '='.join([str(v) for v in values])
+        MAXPNUOT = np.max(values)
+        MeanPNUOT = np.mean(values)
+        persistance = MAXPNUOT / float(prod)
+
+        t = len(topics)
+        trans_poses = []
+        trans_direction = []
+        intopics = set([])
+        for i, topic in enumerate(topics):
+            intopics.add(topic)
+            if i > 0 and topic != topics[i - 1]:
+                trans_poses.append(i / float(t))
+
+                year = years[i - 1]
+                oldnum = topic_year_num[topics[i - 1]].get(year, 0)
+                newnum = topic_year_num[topics[i]].get(year, 0)
+
+                p = (newnum - oldnum) / float(oldnum)
+                trans_direction.append(p)
+
+        author_trans_data[author] = [trans_poses, trans_direction]
+
+        lines.append(
+            f"{author},{hindex},{prod},{tnc},{anc},{unt},{PNUOT},{MAXPNUOT},{MeanPNUOT},{diversity},{persistance}"
+        )
+
+    open('data/author_topic_indicators.txt', 'w',
+         encoding='utf8').write('\n'.join(lines))
+    logging.info('data saved to data/author_topic_indicators.txt.')
+
+    open('data/trans_dynamic_data.json',
+         'w').write(json.dumps(author_trans_data))
+    logging.info('data saved to data/trans_dynamic_data.json')
+
+
+def Hindex(index_list):
+
+    hindex = 0
+    for i, index in enumerate(
+            sorted(index_list, key=lambda x: int(x), reverse=True)):
+
+        if i > index:
+            break
+
+        hindex = i
+
+    return hindex
+
+
 if __name__ == '__main__':
 
     # APS_PCASCODE_process()
-    filter_author_by_papernum()
+    # filter_author_by_papernum()
+    generate_static_data()

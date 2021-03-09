@@ -4,15 +4,19 @@ Stat the basic attribute of author topic selection behavior, and explore the und
 ## Data
 APS dataset, Available by sending email to APS.org for research purpose.
 
-## Author Disambugation
-Same Name, Same Institution, Same Abbreviation
+
 
 ## Processing
 PACS code as the topic.
 
-authorid, prod, hindex, total citations
+#### Author Disambugation
+Same Name, Same Institution, Same Abbreviation
+
 Author paper number distribution as below:
 ![Author paper number distribution](fig/author_pnum_dis.png)
+
+#### Filtering
+20,753 authors of which paper number is between 5 and 100 are reserved.
 
 ## Staitic Indicators
 
@@ -20,8 +24,8 @@ Author paper number distribution as below:
 
     1. Unique number of Topic.
     2. Number of papers under same topic, Mean, Max
-    3. Diversity of topics.
-    4. Persistance.
+    3. Diversity of topics. Gini Index
+    4. Persistance. max paper number under one topic / Max paper number
 
 #### Dependent indicators:
    
@@ -57,3 +61,4 @@ exp: (2+5+8+10)/11
 
     Transition Direction = N(new topic) - N(old topic)
 
+ 
