@@ -28,7 +28,7 @@ Dependent indicators:
 
 ### Dynamic Indicators
 
-Topic sequence example:
+#### Topic sequence example:
 
     t1 t1 | t2 t1 t2 | t3 t3 t2 | t4 t4 | t5
           |          |          |       |
@@ -36,11 +36,11 @@ Topic sequence example:
         Topic Transition
     When New topics are selected.
 
-Two indicators:
+#### Two indicators:
 
-    1. Transition Pos: the relative position in topic sequence.
+1. Transition Pos: the relative position in topic sequence.
 
-    exp: (2+5+8+10)/11
+exp: (2+5+8+10)/11
 
     Expectation:
     |     ---                _ _ _ 
@@ -49,7 +49,7 @@ Two indicators:
     | _/
     |__________________________________________
 
-    2. Transtion Direction: transt to more polular topic or less popular topic.
+2. Transtion Direction: transt to more polular topic or less popular topic.
 
     Transition Direction = N(new topic) - N(old topic)
 
