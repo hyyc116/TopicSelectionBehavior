@@ -10,6 +10,8 @@ Same Name, Same Institution, Same Abbreviation
 ## Processing
 PACS code as the topic.
 
+authorid, prod, hindex, total citations,
+
 ## Staitic Indicators
 
 #### Independent indicators:
