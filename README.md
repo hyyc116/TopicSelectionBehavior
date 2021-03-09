@@ -10,7 +10,9 @@ Same Name, Same Institution, Same Abbreviation
 ## Processing
 PACS code as the topic.
 
-authorid, prod, hindex, total citations,
+authorid, prod, hindex, total citations
+Author paper number distribution as below:
+![Author paper number distribution](fig/author_pnum_dis.png)
 
 ## Staitic Indicators
 
