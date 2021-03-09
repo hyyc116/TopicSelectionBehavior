@@ -43,10 +43,10 @@ PACS code as the topic.
 exp: (2+5+8+10)/11
 
     Expectation:
-    |     ---                _ _ _ 
+    |     _ _                _ _ _ 
     |    /   \              /     \
-    |   /     \_ _ _ _ _ __/       \_ _ _ _
-    | _/
+    |   /     \    _ _ _ __/       \_ _ _ _
+    | _/       \_/
     |__________________________________________
 
 2. Transtion Direction: transt to more polular topic or less popular topic.
