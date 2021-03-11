@@ -96,6 +96,8 @@ def filter_author_by_papernum(min=5, max=100, plot_distribution=True):
         if len(topics) < 5:
             continue
 
+        author = author.replace(',', '')
+
         author_topics[author] = [topics, cns, years]
 
     open('data/author_topics.json', 'w').write(json.dumps(author_topics))
@@ -145,9 +147,17 @@ def generate_static_data():
 
         topics, cns, years = author_topics[author]
 
+        yearsI = [int(y) for y in years]
+
         topic_counter = Counter(topics)
 
         values = list(topic_counter.values())
+
+        topic_years = defaultdict(list)
+
+        for ti, topic in enumerate(topics):
+
+            topic_years[topic].append(yearsI[ti])
 
         hindex = Hindex(cns)
         prod = len(topics)
@@ -158,23 +168,35 @@ def generate_static_data():
         PNUOT = '='.join([str(v) for v in values])
         MAXPNUOT = np.max(values)
         MeanPNUOT = np.mean(values)
-        persistance = MAXPNUOT / float(prod)
+
+        maxtopic = sorted(topic_years.keys(),
+                          key=lambda x: len(topic_years[x]),
+                          reverse=True)[0]
+        max_years = topic_years[maxtopic]
+        assert (MAXPNUOT == len(max_years))
+
+        if (np.max(yearsI) - np.min(yearsI)) == 0:
+            persistance = 0
+        else:
+            persistance = (np.max(max_years) - np.min(max_years)) / (
+                np.max(yearsI) - np.min(yearsI))
 
         t = len(topics)
         trans_poses = []
         trans_direction = []
         intopics = set([])
         for i, topic in enumerate(topics):
-            intopics.add(topic)
-            if i > 0 and topic != topics[i - 1]:
+            if i > 0 and topic not in intopics and topic != topics[i - 1]:
                 trans_poses.append(i / float(t))
 
                 year = years[i - 1]
                 oldnum = topic_year_num[topics[i - 1]].get(year, 0)
                 newnum = topic_year_num[topics[i]].get(year, 0)
 
-                p = (newnum - oldnum) / float(oldnum)
+                p = newnum - oldnum
                 trans_direction.append(p)
+
+            intopics.add(topic)
 
         author_trans_data[author] = [trans_poses, trans_direction]
 

@@ -32,7 +32,8 @@ Author paper number distribution as below:
     1. Productivity
     2. Hindex
     3. Total number of citations.
-    4. etc.
+
+
 
 ## Dynamic Indicators
 
