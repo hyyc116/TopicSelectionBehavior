@@ -30,9 +30,16 @@ def hist_indicators():
                tnc_list,
                is_con=True)
 
-    maxPNUOT = data['MAX PNUOT']
-    attr1VsALL(maxPNUOT, 'MAX PNUOT', 'max(PNUOT)', prod_list, hindex_list,
-               tnc_list)
+    data['MAX PNUOT N'] = data['MAX PNUOT'] / data['productivity']
+    maxPNUOT = data['MAX PNUOT N']
+    attr1VsALL(maxPNUOT,
+               'MAX PNUOT N',
+               'normed max(PNUOT)',
+               prod_list,
+               hindex_list,
+               tnc_list,
+               is_con=True)
+               
     diversity_list = data['diversity']
     attr1VsALL(diversity_list,
                'diversity',
@@ -209,9 +216,13 @@ def dynamic_attrs():
 
     poses = []
     directions = []
+
+    t_intervals = defaultdict(list)
+
+    t_poses = defaultdict(list)
     for author in author_dynamics.keys():
 
-        pos, direction = author_dynamics[author]
+        pos, direction, t = author_dynamics[author]
 
         # for i, d in enumerate(direction):
         #     if d <= 1:
@@ -219,6 +230,16 @@ def dynamic_attrs():
         #         poses.append(pos[i])
         directions.extend(direction)
         poses.extend(pos)
+        if t > 15:
+            t = 15
+        t_poses[t].extend(pos)
+
+        last_i = 0
+        for i, p in enumerate(pos):
+
+            interval = p - last_i
+            t_intervals[t].append(interval)
+            last_i = p
 
     print(len(poses), len(directions))
 
@@ -229,19 +250,18 @@ def dynamic_attrs():
     # plt.plot(xs, ys)
     sns.histplot(data, x='POS', bins=20, kde=True)
 
-    plt.tight_layout()
+    plt.xlabel('selection position')
 
     plt.savefig('fig/dynamic_pos.png', dpi=400)
 
     plt.figure(figsize=(5, 4))
-    newdata = pd.DataFrame()
-    newdata['POS'] = data['POS']
-    newdata['DIRECT'] = data['Direction']
-    sns.jointplot(data=newdata, x='POS', y='DIRECT')
+
+    sns.histplot(data, x='Direction', bins=20, kde=True)
 
     plt.tight_layout()
 
-    plt.savefig('fig/dynamic_matrix.png', dpi=400)
+    plt.savefig('fig/dynamic_direction.png', dpi=400)
+
     bins_directions = defaultdict(list)
     for i, pos in enumerate(poses):
 
@@ -265,10 +285,38 @@ def dynamic_attrs():
 
     plt.savefig('fig/bin_directions.png', dpi=400)
 
+    for t in [5, 6, 7, 8, 10, 11]:
+
+        poses = t_poses[t]
+
+        plt.figure(figsize=(5, 4))
+
+        data = pd.DataFrame.from_dict({'POS': poses})
+
+        sns.histplot(data, x='POS', kde=True)
+
+        plt.tight_layout()
+
+        plt.savefig(f'fig/{t}_pos.png', dpi=400)
+
+    for t in [5, 6, 7, 8, 10, 11, 12, 15]:
+
+        poses = t_intervals[t]
+
+        plt.figure(figsize=(5, 4))
+
+        data = pd.DataFrame.from_dict({'interval': poses})
+
+        sns.histplot(data, x='interval', kde=True)
+
+        plt.tight_layout()
+
+        plt.savefig(f'fig/{t}_interval.png', dpi=400)
+
 
 def pos_bin(pos):
 
-    return int(pos / 0.2)
+    return int(pos / 0.1)
 
 
 if __name__ == "__main__":

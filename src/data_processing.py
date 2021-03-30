@@ -6,54 +6,8 @@ from basic_config import *
 APS_PROJECT_PATH = 'F:\\APS_data_processing'
 
 
-def APS_PCASCODE_process():
-
-    paper_year = json.loads(
-        open(APS_PROJECT_PATH + '\\data\\pid_pubyear.json').read())
-
-    topic_year_num = defaultdict(lambda: defaultdict(int))
-
-    paper_topic = {}
-    for line in open('G:\\APS\\PCAS.txt', encoding='utf-8'):
-
-        line = line.strip()
-
-        if line.startswith('DOI'):
-            continue
-
-        splits = line.split(',')
-
-        doi = splits[0]
-
-        codes = []
-        for code in splits[1:]:
-
-            if code.strip() == '':
-                continue
-
-            # 只保留一级主题
-            codes.append(code.split('.')[0].split(' ')[-1])
-
-        topic = codes[np.random.randint(0, len(codes))]
-
-        year = paper_year.get(doi, -1)
-
-        topic_year_num[topic][year] += 1
-
-        paper_topic[doi] = topic
-
-    logging.info('{} papers has topics.'.format(len(paper_topic)))
-
-    open(APS_PROJECT_PATH + '\\data\paper_topic.json',
-         'w').write(json.dumps(paper_topic))
-
-    logging.info('paper topic saved.')
-
-    open('data/topic_year_num.json', 'w').write(json.dumps(topic_year_num))
-
-
 # 根据作者的论文数量对作者进行过滤
-def filter_author_by_papernum(min=5, max=100, plot_distribution=True):
+def filter_author_by_papernum(min=30,  max=2000,  plot_distribution=True):
 
     logging.info('loading author paper num data ... ')
 
@@ -93,7 +47,7 @@ def filter_author_by_papernum(min=5, max=100, plot_distribution=True):
                     cns.append(paper_cn.get(paper, 0))
                     years.append(year)
 
-        if len(topics) < 5:
+        if len(topics) < min:
             continue
 
         author = author.replace(',', '')
@@ -183,7 +137,7 @@ def generate_static_data():
 
         t = len(topics)
         trans_poses = []
-        trans_direction = []
+        trans_directions = []
         intopics = set([])
         for i, topic in enumerate(topics):
             if i > 0 and topic not in intopics and topic != topics[i - 1]:
@@ -194,14 +148,14 @@ def generate_static_data():
                 newnum = topic_year_num[topics[i]].get(year, 0)
 
                 p = newnum - oldnum
-                trans_direction.append(p)
+                trans_directions.append(p)
 
             intopics.add(topic)
 
-        author_trans_data[author] = [trans_poses, trans_direction]
+        author_trans_data[author] = [trans_poses, trans_directions, t]
 
         lines.append(
-            f"{author},{hindex},{prod},{tnc},{anc},{unt},{PNUOT},{MAXPNUOT},{MeanPNUOT},{diversity},{persistance}"
+            f"{author},{hindex},{prod},{tnc},{anc},{unt},{PNUOT},{MAXPNUOT/float(len(topics))},{MeanPNUOT},{diversity},{persistance}"
         )
 
     open('data/author_topic_indicators.txt', 'w',
@@ -230,5 +184,5 @@ def Hindex(index_list):
 if __name__ == '__main__':
 
     # APS_PCASCODE_process()
-    # filter_author_by_papernum()
+    filter_author_by_papernum()
     generate_static_data()
