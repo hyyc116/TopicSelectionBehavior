@@ -6,6 +6,61 @@ import seaborn as sns
 import pandas as pd
 
 
+def hist_attr(data, attr_names, logs, outpath, col=2, indexed=True):
+
+    indexes = 'abcdefghijklmn'
+
+    attr_num = len(attr_names)
+
+    if attr_num == 0:
+        logging.error('No attrname stated.')
+        return None
+
+    if attr_num != len(logs):
+        logging.error('log scale list do not has same length as attr_names.')
+        return None
+
+    if attr_num == 1:
+        indexed = False
+
+    row = attr_num // col
+
+    fig, axes = plt.subplots(row, col, figsize=(col * 4.5, row * 3.5))
+
+    for i, attr_name in enumerate(attr_names):
+
+        r = i // col
+        c = i % col
+
+        ax = axes[r][c]
+        log = logs[i]
+
+        hist_one_attr(data, attr_name, ax, log=log)
+
+        xlabel = attr_name
+
+        if indexed:
+            xlabel += '\n(' + indexes[i] + ')'
+
+        ax.set_xlabel(xlabel)
+
+    plt.tight_layout()
+
+    plt.savefig(outpath, dpi=400)
+    logging.info(f'fig saved to {outpath}')
+
+
+#一个属性的分布
+def hist_one_attr(data, attr_name, ax, log=True):
+
+    sns.histplot(data,
+                 x=attr_name,
+                 ax=ax,
+                 log_scale=log,
+                 kde=True,
+                 stat='probability')
+
+
 def hist_indicators():
     # read data
     data = pd.read_csv('data/author_topic_indicators.txt')
