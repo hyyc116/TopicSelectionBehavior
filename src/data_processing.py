@@ -116,7 +116,7 @@ def generate_static_data():
         hindex = Hindex(cns)
         prod = len(topics)
         tnc = np.sum(cns)
-        anc = np.sum(cns)
+        anc = np.mean(cns)
         unt = len(set(topics))
         diversity = gini(values)
         PNUOT = '='.join([str(v) for v in values])
@@ -184,5 +184,5 @@ def Hindex(index_list):
 if __name__ == '__main__':
 
     # APS_PCASCODE_process()
-    filter_author_by_papernum()
+    # filter_author_by_papernum()
     generate_static_data()

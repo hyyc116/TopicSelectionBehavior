@@ -16,10 +16,11 @@ def hist_indicators():
     prod_list = data['productivity']
     hindex_list = data['hindex']
     tnc_list = data['TNC']
+    anc_list = data['ANC']
 
     utn_list = data['UNT']
     attr1VsALL(utn_list, 'UNT', 'unique number of topics', prod_list,
-               hindex_list, tnc_list)
+               hindex_list, tnc_list, anc_list)
 
     nutn_list = data['NUNT']
     attr1VsALL(nutn_list,
@@ -28,6 +29,7 @@ def hist_indicators():
                prod_list,
                hindex_list,
                tnc_list,
+               anc_list,
                is_con=True)
 
     data['MAX PNUOT N'] = data['MAX PNUOT'] / data['productivity']
@@ -38,8 +40,9 @@ def hist_indicators():
                prod_list,
                hindex_list,
                tnc_list,
+               anc_list,
                is_con=True)
-               
+
     diversity_list = data['diversity']
     attr1VsALL(diversity_list,
                'diversity',
@@ -47,6 +50,7 @@ def hist_indicators():
                prod_list,
                hindex_list,
                tnc_list,
+               anc_list,
                is_con=True)
 
     persistance_list = data['persistance']
@@ -56,6 +60,7 @@ def hist_indicators():
                prod_list,
                hindex_list,
                tnc_list,
+               anc_list,
                is_con=True)
 
 
@@ -65,6 +70,7 @@ def attr1VsALL(utn_list,
                prod_list,
                hindex_list,
                tnc_list,
+               anc_list=None,
                is_con=False):
     #MAX PNUOT 与个属性之间的关系
     attr1_dis(utn_list, attrName, attrLabel, is_continous=is_con)
@@ -94,6 +100,16 @@ def attr1VsALL(utn_list,
                    f'{attrName}_TNC',
                    logX=True,
                    sample_set=set([5, 10, 20, 50, 100]),
+                   is_con=is_con)
+
+    # unique主题数量与平均值的关系
+    attr1_vs_attr2(utn_list,
+                   anc_list,
+                   attrLabel,
+                   'ANC',
+                   f'{attrName}_ANC',
+                   logX=True,
+                   sample_set=set([5, 7, 8, 10, 20]),
                    is_con=is_con)
 
 
@@ -322,4 +338,4 @@ def pos_bin(pos):
 if __name__ == "__main__":
     hist_indicators()
 
-    dynamic_attrs()
+    # dynamic_attrs()
