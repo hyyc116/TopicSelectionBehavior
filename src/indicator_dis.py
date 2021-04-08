@@ -4,11 +4,16 @@ from scipy.optimize.optimize import main
 from basic_config import *
 import seaborn as sns
 import pandas as pd
+import numpy as np
+import statsmodels.api as sm
+lowess = sm.nonparametric.lowess
+from patsy import dmatrices
+import statsmodels.formula.api as smf
 
 
 def hist_attrs(data, attr_names, logs, outpath, col=2, indexed=True):
 
-    indexes = 'abcdefghijklmn'
+    indexes = 'abcdefghijklmnopqrst'
 
     attr_num = len(attr_names)
 
@@ -66,16 +71,17 @@ def relations_maps(data,
                    ys=['productivity', 'hindex'],
                    outpath=None):
 
-    indexes = 'abcdefghijklmn'
+    # indexes = 'abcdefghijklmn'
+    indexes = 'abcdefghijklmnopqrst'
 
     row = len(xs)
     col = len(ys)
-    fig, axes = plt.subplots(len(xs), len(ys), figsize=(col * 4.5, row * 3.5))
+    fig, axes = plt.subplots(col, row, figsize=(row * 4.5, col * 3.5))
 
     figindex = 0
-    for i, x in enumerate(xs):
+    for i, x in enumerate(ys):
 
-        for j, y in enumerate(ys):
+        for j, y in enumerate(xs):
 
             ax = axes[i][j]
 
@@ -83,6 +89,10 @@ def relations_maps(data,
 
             xlabel = x
             ax.set_xlabel(xlabel + '\n(' + indexes[figindex] + ')')
+            ax.set_ylabel(y)
+
+            if x == 'productivity':
+                ax.set_xscale('log')
 
             figindex += 1
 
@@ -93,7 +103,18 @@ def relations_maps(data,
 
 
 def rel_two_attrs(data, x, y, ax):
-    sns.lineplot(data=data, x=x, y=y, ax=ax, ci='sd')
+    sns.lineplot(data=data, x=x, y=y, ax=ax, alpha=0.5, ci=None)
+    xs, ys = zip(*lowess(data[y], data[x], frac=1. / 3, it=0))
+
+    # ax.plot(xs, ys)
+
+    # xs, ys = zip(*lowess(data[y], data[x], frac=1. / 3))
+
+    # ax.plot(xs, ys)
+
+    # xs, ys = zip(*lowess(data[y], data[x]))
+
+    ax.plot(xs, ys)
 
 
 def variable_dis():
@@ -112,11 +133,85 @@ def variable_dis():
                [False, False, False, True], 'fig/fig2.png')
 
     relations_maps(data,
-                   xs=['NUNT', 'productivity'],
-                   ys=['hindex', 'TNC', 'diversity'],
+                   xs=['UNT', 'NUNT', 'diversity', 'persistence'],
+                   ys=['hindex', 'TNC', 'ANC', 'productivity'],
                    outpath='fig/fig3.png')
+
+    relations_maps(data,
+                   ys=['UNT', 'NUNT', 'diversity', 'persistence'],
+                   xs=['hindex', 'TNC', 'ANC', 'productivity'],
+                   outpath='fig/fig4.png')
+
+    relations_maps(data,
+                   ys=['productivity', 'UNT'],
+                   xs=['hindex', 'TNC', 'ANC'],
+                   outpath='fig/fig5.png')
+
+
+def regression_analysis():
+
+    data = pd.read_csv('data/author_topic_indicators.txt')
+
+    data['NUNT'] = data['UNT'] / data['productivity']
+    data['persistence'] = data['MAX PNUOT'] / data['productivity']
+
+    print('----------------------------------------------------')
+    print('hindex ~ UNT + NUNT + diversity + persistence + productivity')
+
+    mod = smf.ols(
+        formula='hindex ~ UNT + NUNT + diversity + persistence + productivity',
+        data=data)
+
+    res = mod.fit()
+
+    print(res.summary())
+
+    print('----------------------------------------------------')
+    print('hindex ~ UNT + NUNT + diversity + persistence')
+
+    mod = smf.ols(formula='hindex ~ UNT + NUNT + diversity + persistence',
+                  data=data)
+
+    res = mod.fit()
+
+    print(res.summary())
+
+    print('----------------------------------------------------')
+    print('np.log(TNC+1) ~ UNT + NUNT + diversity + persistence')
+
+    mod = smf.ols(
+        formula='np.log(TNC+1) ~ UNT + NUNT + diversity + persistence',
+        data=data)
+
+    res = mod.fit()
+
+    print(res.summary())
+
+    print('----------------------------------------------------')
+    print('np.log(productivity) ~ UNT + NUNT + diversity + persistence')
+
+    mod = smf.ols(
+        formula='np.log(productivity) ~ UNT + NUNT + diversity + persistence',
+        data=data)
+
+    res = mod.fit()
+
+    print(res.summary())
+
+    print('----------------------------------------------------')
+    print('np.log(ANC+1) ~ UNT + NUNT + diversity + persistence')
+
+    mod = smf.ols(
+        formula='np.log(ANC+1) ~ UNT + NUNT + diversity + persistence',
+        data=data)
+
+    res = mod.fit()
+
+    print(res.summary())
 
 
 if __name__ == "__main__":
 
-    variable_dis()
+    # variable_dis()
+
+    regression_analysis()
