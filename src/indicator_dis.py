@@ -155,59 +155,51 @@ def regression_analysis():
     data['NUNT'] = data['UNT'] / data['productivity']
     data['persistence'] = data['MAX PNUOT'] / data['productivity']
 
-    print('----------------------------------------------------')
-    print('hindex ~ UNT + NUNT + diversity + persistence + productivity')
+    rights = ['hindex', 'productivity', 'np.log(TNC + 1)', 'np.log(ANC+1)']
+
+    lefts = ['UNT', 'NUNT', 'diversity', 'persistence']
+
+    # formula1 = 'hindex ~ UNT + NUNT + diversity + persistence + productivity'
+
+    results = []
+    for right in rights:
+
+        for left in lefts:
+
+            formula = right + ' ~ '
+
+            parameters = list(set(lefts) - set([left]))
+
+            formula += ' + '.join(parameters)
+
+            result = formulate_ols(data, formula)
+
+            results.extend(result)
+
+        formula = right + ' ~ ' + ' + '.join(parameters)
+        result = formulate_ols(data, formula)
+
+        results.extend(result)
+
+    open('data/result.txt', 'w').write('\n'.join(results))
+
+
+def formulate_ols(data, formula):
+
+    lines = []
+
+    lines.append('----------------------------------------------------')
+    lines.append('formula:'  + formula)
 
     mod = smf.ols(
-        formula='hindex ~ UNT + NUNT + diversity + persistence + productivity',
+        formula=formula,
         data=data)
 
     res = mod.fit()
 
-    print(res.summary())
+    lines.append(str(res.summary()))
 
-    print('----------------------------------------------------')
-    print('hindex ~ UNT + NUNT + diversity + persistence')
-
-    mod = smf.ols(formula='hindex ~ UNT + NUNT + diversity + persistence',
-                  data=data)
-
-    res = mod.fit()
-
-    print(res.summary())
-
-    print('----------------------------------------------------')
-    print('np.log(TNC+1) ~ UNT + NUNT + diversity + persistence')
-
-    mod = smf.ols(
-        formula='np.log(TNC+1) ~ UNT + NUNT + diversity + persistence',
-        data=data)
-
-    res = mod.fit()
-
-    print(res.summary())
-
-    print('----------------------------------------------------')
-    print('np.log(productivity) ~ UNT + NUNT + diversity + persistence')
-
-    mod = smf.ols(
-        formula='np.log(productivity) ~ UNT + NUNT + diversity + persistence',
-        data=data)
-
-    res = mod.fit()
-
-    print(res.summary())
-
-    print('----------------------------------------------------')
-    print('np.log(ANC+1) ~ UNT + NUNT + diversity + persistence')
-
-    mod = smf.ols(
-        formula='np.log(ANC+1) ~ UNT + NUNT + diversity + persistence',
-        data=data)
-
-    res = mod.fit()
-
-    print(res.summary())
+    return lines
 
 
 if __name__ == "__main__":
