@@ -1,12 +1,12 @@
 ----------------------------------------------------
-formula:hindex ~ diversity + NUNT + persistence
+formula:hindex ~ NUNT + persistence + diversity
                             OLS Regression Results                            
 ==============================================================================
 Dep. Variable:                 hindex   R-squared:                       0.443
 Model:                            OLS   Adj. R-squared:                  0.442
 Method:                 Least Squares   F-statistic:                     2836.
 Date:                Thu, 15 Apr 2021   Prob (F-statistic):               0.00
-Time:                        14:36:56   Log-Likelihood:                -30276.
+Time:                        15:54:13   Log-Likelihood:                -30276.
 No. Observations:               10719   AIC:                         6.056e+04
 Df Residuals:                   10715   BIC:                         6.059e+04
 Df Model:                           3                                         
@@ -15,9 +15,9 @@ Covariance Type:            nonrobust
                   coef    std err          t      P>|t|      [0.025      0.975]
 -------------------------------------------------------------------------------
 Intercept      14.6381      0.241     60.632      0.000      14.165      15.111
-diversity      11.7621      0.356     33.002      0.000      11.064      12.461
 NUNT          -27.6275      0.503    -54.925      0.000     -28.613     -26.641
 persistence  -433.2414      6.445    -67.224      0.000    -445.874    -420.608
+diversity      11.7621      0.356     33.002      0.000      11.064      12.461
 ==============================================================================
 Omnibus:                     2724.690   Durbin-Watson:                   1.887
 Prob(Omnibus):                  0.000   Jarque-Bera (JB):            10512.584
@@ -28,14 +28,14 @@ Kurtosis:                       7.190   Cond. No.                         187.
 Warnings:
 [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
 ----------------------------------------------------
-formula:hindex ~ diversity + UNT + persistence
+formula:hindex ~ persistence + diversity + UNT
                             OLS Regression Results                            
 ==============================================================================
 Dep. Variable:                 hindex   R-squared:                       0.288
 Model:                            OLS   Adj. R-squared:                  0.287
 Method:                 Least Squares   F-statistic:                     1442.
 Date:                Thu, 15 Apr 2021   Prob (F-statistic):               0.00
-Time:                        14:36:56   Log-Likelihood:                -31590.
+Time:                        15:54:13   Log-Likelihood:                -31590.
 No. Observations:               10719   AIC:                         6.319e+04
 Df Residuals:                   10715   BIC:                         6.322e+04
 Df Model:                           3                                         
@@ -44,9 +44,9 @@ Covariance Type:            nonrobust
                   coef    std err          t      P>|t|      [0.025      0.975]
 -------------------------------------------------------------------------------
 Intercept       7.4613      0.250     29.892      0.000       6.972       7.951
+persistence  -396.3356      9.378    -42.263      0.000    -414.718    -377.954
 diversity      16.7513      0.397     42.167      0.000      15.973      17.530
 UNT            -0.0517      0.010     -5.422      0.000      -0.070      -0.033
-persistence  -396.3356      9.378    -42.263      0.000    -414.718    -377.954
 ==============================================================================
 Omnibus:                     3140.635   Durbin-Watson:                   1.850
 Prob(Omnibus):                  0.000   Jarque-Bera (JB):            11714.005
@@ -59,14 +59,14 @@ Warnings:
 [2] The condition number is large, 2.37e+03. This might indicate that there are
 strong multicollinearity or other numerical problems.
 ----------------------------------------------------
-formula:hindex ~ NUNT + UNT + persistence
+formula:hindex ~ NUNT + persistence + UNT
                             OLS Regression Results                            
 ==============================================================================
 Dep. Variable:                 hindex   R-squared:                       0.417
 Model:                            OLS   Adj. R-squared:                  0.416
 Method:                 Least Squares   F-statistic:                     2550.
 Date:                Thu, 15 Apr 2021   Prob (F-statistic):               0.00
-Time:                        14:36:56   Log-Likelihood:                -30521.
+Time:                        15:54:13   Log-Likelihood:                -30521.
 No. Observations:               10719   AIC:                         6.105e+04
 Df Residuals:                   10715   BIC:                         6.108e+04
 Df Model:                           3                                         
@@ -76,8 +76,8 @@ Covariance Type:            nonrobust
 -------------------------------------------------------------------------------
 Intercept      18.9135      0.166    113.769      0.000      18.588      19.239
 NUNT          -35.6168      0.529    -67.364      0.000     -36.653     -34.580
-UNT             0.2132      0.009     23.696      0.000       0.196       0.231
 persistence  -315.9722      8.443    -37.423      0.000    -332.522    -299.422
+UNT             0.2132      0.009     23.696      0.000       0.196       0.231
 ==============================================================================
 Omnibus:                     2864.428   Durbin-Watson:                   1.842
 Prob(Omnibus):                  0.000   Jarque-Bera (JB):            11859.002
@@ -90,14 +90,14 @@ Warnings:
 [2] The condition number is large, 2.36e+03. This might indicate that there are
 strong multicollinearity or other numerical problems.
 ----------------------------------------------------
-formula:hindex ~ diversity + NUNT + UNT
+formula:hindex ~ NUNT + diversity + UNT
                             OLS Regression Results                            
 ==============================================================================
 Dep. Variable:                 hindex   R-squared:                       0.365
 Model:                            OLS   Adj. R-squared:                  0.365
 Method:                 Least Squares   F-statistic:                     2052.
 Date:                Thu, 15 Apr 2021   Prob (F-statistic):               0.00
-Time:                        14:36:56   Log-Likelihood:                -30975.
+Time:                        15:54:13   Log-Likelihood:                -30975.
 No. Observations:               10719   AIC:                         6.196e+04
 Df Residuals:                   10715   BIC:                         6.199e+04
 Df Model:                           3                                         
@@ -106,8 +106,8 @@ Covariance Type:            nonrobust
                  coef    std err          t      P>|t|      [0.025      0.975]
 ------------------------------------------------------------------------------
 Intercept      9.4652      0.240     39.483      0.000       8.995       9.935
-diversity      7.9744      0.391     20.404      0.000       7.208       8.741
 NUNT         -33.2279      0.578    -57.516      0.000     -34.360     -32.095
+diversity      7.9744      0.391     20.404      0.000       7.208       8.741
 UNT            0.3881      0.008     51.536      0.000       0.373       0.403
 ==============================================================================
 Omnibus:                     2833.029   Durbin-Watson:                   1.796
@@ -119,14 +119,14 @@ Kurtosis:                       7.431   Cond. No.                         167.
 Warnings:
 [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
 ----------------------------------------------------
-formula:hindex ~ diversity + NUNT + UNT
+formula:hindex ~ NUNT + diversity + UNT
                             OLS Regression Results                            
 ==============================================================================
 Dep. Variable:                 hindex   R-squared:                       0.365
 Model:                            OLS   Adj. R-squared:                  0.365
 Method:                 Least Squares   F-statistic:                     2052.
 Date:                Thu, 15 Apr 2021   Prob (F-statistic):               0.00
-Time:                        14:36:56   Log-Likelihood:                -30975.
+Time:                        15:54:13   Log-Likelihood:                -30975.
 No. Observations:               10719   AIC:                         6.196e+04
 Df Residuals:                   10715   BIC:                         6.199e+04
 Df Model:                           3                                         
@@ -135,8 +135,8 @@ Covariance Type:            nonrobust
                  coef    std err          t      P>|t|      [0.025      0.975]
 ------------------------------------------------------------------------------
 Intercept      9.4652      0.240     39.483      0.000       8.995       9.935
-diversity      7.9744      0.391     20.404      0.000       7.208       8.741
 NUNT         -33.2279      0.578    -57.516      0.000     -34.360     -32.095
+diversity      7.9744      0.391     20.404      0.000       7.208       8.741
 UNT            0.3881      0.008     51.536      0.000       0.373       0.403
 ==============================================================================
 Omnibus:                     2833.029   Durbin-Watson:                   1.796
@@ -148,14 +148,14 @@ Kurtosis:                       7.431   Cond. No.                         167.
 Warnings:
 [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
 ----------------------------------------------------
-formula:productivity ~ diversity + NUNT + persistence
+formula:productivity ~ NUNT + persistence + diversity
                             OLS Regression Results                            
 ==============================================================================
 Dep. Variable:           productivity   R-squared:                       0.368
 Model:                            OLS   Adj. R-squared:                  0.368
 Method:                 Least Squares   F-statistic:                     2080.
 Date:                Thu, 15 Apr 2021   Prob (F-statistic):               0.00
-Time:                        14:36:56   Log-Likelihood:                -56966.
+Time:                        15:54:13   Log-Likelihood:                -56966.
 No. Observations:               10719   AIC:                         1.139e+05
 Df Residuals:                   10715   BIC:                         1.140e+05
 Df Model:                           3                                         
@@ -164,9 +164,9 @@ Covariance Type:            nonrobust
                   coef    std err          t      P>|t|      [0.025      0.975]
 -------------------------------------------------------------------------------
 Intercept      99.3156      2.912     34.107      0.000      93.608     105.023
-diversity     109.0369      4.299     25.365      0.000     100.611     117.463
 NUNT         -239.3504      6.067    -39.452      0.000    -251.242    -227.458
 persistence -5081.9241     77.731    -65.378      0.000   -5234.292   -4929.556
+diversity     109.0369      4.299     25.365      0.000     100.611     117.463
 ==============================================================================
 Omnibus:                    17472.657   Durbin-Watson:                   1.472
 Prob(Omnibus):                  0.000   Jarque-Bera (JB):         14387086.493
@@ -177,14 +177,14 @@ Kurtosis:                     181.180   Cond. No.                         187.
 Warnings:
 [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
 ----------------------------------------------------
-formula:productivity ~ diversity + UNT + persistence
+formula:productivity ~ persistence + diversity + UNT
                             OLS Regression Results                            
 ==============================================================================
 Dep. Variable:           productivity   R-squared:                       0.481
 Model:                            OLS   Adj. R-squared:                  0.481
 Method:                 Least Squares   F-statistic:                     3310.
 Date:                Thu, 15 Apr 2021   Prob (F-statistic):               0.00
-Time:                        14:36:56   Log-Likelihood:                -55910.
+Time:                        15:54:13   Log-Likelihood:                -55910.
 No. Observations:               10719   AIC:                         1.118e+05
 Df Residuals:                   10715   BIC:                         1.119e+05
 Df Model:                           3                                         
@@ -193,9 +193,9 @@ Covariance Type:            nonrobust
                   coef    std err          t      P>|t|      [0.025      0.975]
 -------------------------------------------------------------------------------
 Intercept     -41.8215      2.413    -17.330      0.000     -46.552     -37.091
+persistence  -656.5675     90.666     -7.242      0.000    -834.289    -478.846
 diversity     106.7999      3.841     27.807      0.000      99.271     114.329
 UNT             5.9972      0.092     65.024      0.000       5.816       6.178
-persistence  -656.5675     90.666     -7.242      0.000    -834.289    -478.846
 ==============================================================================
 Omnibus:                    14075.516   Durbin-Watson:                   1.738
 Prob(Omnibus):                  0.000   Jarque-Bera (JB):          5343910.672
@@ -208,14 +208,14 @@ Warnings:
 [2] The condition number is large, 2.37e+03. This might indicate that there are
 strong multicollinearity or other numerical problems.
 ----------------------------------------------------
-formula:productivity ~ NUNT + UNT + persistence
+formula:productivity ~ NUNT + persistence + UNT
                             OLS Regression Results                            
 ==============================================================================
 Dep. Variable:           productivity   R-squared:                       0.745
 Model:                            OLS   Adj. R-squared:                  0.745
 Method:                 Least Squares   F-statistic:                 1.042e+04
 Date:                Thu, 15 Apr 2021   Prob (F-statistic):               0.00
-Time:                        14:36:56   Log-Likelihood:                -52107.
+Time:                        15:54:13   Log-Likelihood:                -52107.
 No. Observations:               10719   AIC:                         1.042e+05
 Df Residuals:                   10715   BIC:                         1.043e+05
 Df Model:                           3                                         
@@ -225,8 +225,8 @@ Covariance Type:            nonrobust
 -------------------------------------------------------------------------------
 Intercept      54.7635      1.246     43.968      0.000      52.322      57.205
 NUNT         -445.3877      3.961   -112.437      0.000    -453.152    -437.623
-UNT             8.8922      0.067    131.931      0.000       8.760       9.024
 persistence    63.5964     63.258      1.005      0.315     -60.400     187.593
+UNT             8.8922      0.067    131.931      0.000       8.760       9.024
 ==============================================================================
 Omnibus:                    16298.736   Durbin-Watson:                   1.851
 Prob(Omnibus):                  0.000   Jarque-Bera (JB):         14735523.010
@@ -239,14 +239,14 @@ Warnings:
 [2] The condition number is large, 2.36e+03. This might indicate that there are
 strong multicollinearity or other numerical problems.
 ----------------------------------------------------
-formula:productivity ~ diversity + NUNT + UNT
+formula:productivity ~ NUNT + diversity + UNT
                             OLS Regression Results                            
 ==============================================================================
 Dep. Variable:           productivity   R-squared:                       0.745
 Model:                            OLS   Adj. R-squared:                  0.745
 Method:                 Least Squares   F-statistic:                 1.045e+04
 Date:                Thu, 15 Apr 2021   Prob (F-statistic):               0.00
-Time:                        14:36:56   Log-Likelihood:                -52096.
+Time:                        15:54:13   Log-Likelihood:                -52096.
 No. Observations:               10719   AIC:                         1.042e+05
 Df Residuals:                   10715   BIC:                         1.042e+05
 Df Model:                           3                                         
@@ -255,8 +255,8 @@ Covariance Type:            nonrobust
                  coef    std err          t      P>|t|      [0.025      0.975]
 ------------------------------------------------------------------------------
 Intercept     48.2161      1.720     28.037      0.000      44.845      51.587
-diversity     13.6252      2.804      4.860      0.000       8.129      19.121
 NUNT        -439.0537      4.144   -105.938      0.000    -447.178    -430.930
+diversity     13.6252      2.804      4.860      0.000       8.129      19.121
 UNT            8.7890      0.054    162.707      0.000       8.683       8.895
 ==============================================================================
 Omnibus:                    16446.664   Durbin-Watson:                   1.850
@@ -268,14 +268,14 @@ Kurtosis:                     187.704   Cond. No.                         167.
 Warnings:
 [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
 ----------------------------------------------------
-formula:productivity ~ diversity + NUNT + UNT
+formula:productivity ~ NUNT + diversity + UNT
                             OLS Regression Results                            
 ==============================================================================
 Dep. Variable:           productivity   R-squared:                       0.745
 Model:                            OLS   Adj. R-squared:                  0.745
 Method:                 Least Squares   F-statistic:                 1.045e+04
 Date:                Thu, 15 Apr 2021   Prob (F-statistic):               0.00
-Time:                        14:36:56   Log-Likelihood:                -52096.
+Time:                        15:54:13   Log-Likelihood:                -52096.
 No. Observations:               10719   AIC:                         1.042e+05
 Df Residuals:                   10715   BIC:                         1.042e+05
 Df Model:                           3                                         
@@ -284,8 +284,8 @@ Covariance Type:            nonrobust
                  coef    std err          t      P>|t|      [0.025      0.975]
 ------------------------------------------------------------------------------
 Intercept     48.2161      1.720     28.037      0.000      44.845      51.587
-diversity     13.6252      2.804      4.860      0.000       8.129      19.121
 NUNT        -439.0537      4.144   -105.938      0.000    -447.178    -430.930
+diversity     13.6252      2.804      4.860      0.000       8.129      19.121
 UNT            8.7890      0.054    162.707      0.000       8.683       8.895
 ==============================================================================
 Omnibus:                    16446.664   Durbin-Watson:                   1.850
@@ -297,14 +297,14 @@ Kurtosis:                     187.704   Cond. No.                         167.
 Warnings:
 [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
 ----------------------------------------------------
-formula:np.log(TNC + 1) ~ diversity + NUNT + persistence
+formula:np.log(TNC + 1) ~ NUNT + persistence + diversity
                             OLS Regression Results                            
 ==============================================================================
 Dep. Variable:        np.log(TNC + 1)   R-squared:                       0.460
 Model:                            OLS   Adj. R-squared:                  0.460
 Method:                 Least Squares   F-statistic:                     3044.
 Date:                Thu, 15 Apr 2021   Prob (F-statistic):               0.00
-Time:                        14:36:56   Log-Likelihood:                -10324.
+Time:                        15:54:13   Log-Likelihood:                -10324.
 No. Observations:               10719   AIC:                         2.066e+04
 Df Residuals:                   10715   BIC:                         2.069e+04
 Df Model:                           3                                         
@@ -313,9 +313,9 @@ Covariance Type:            nonrobust
                   coef    std err          t      P>|t|      [0.025      0.975]
 -------------------------------------------------------------------------------
 Intercept       6.5361      0.038    174.141      0.000       6.463       6.610
-diversity       1.8577      0.055     33.526      0.000       1.749       1.966
 NUNT           -4.2446      0.078    -54.278      0.000      -4.398      -4.091
 persistence   -72.6478      1.002    -72.507      0.000     -74.612     -70.684
+diversity       1.8577      0.055     33.526      0.000       1.749       1.966
 ==============================================================================
 Omnibus:                      179.218   Durbin-Watson:                   1.859
 Prob(Omnibus):                  0.000   Jarque-Bera (JB):              344.668
@@ -326,14 +326,14 @@ Kurtosis:                       3.867   Cond. No.                         187.
 Warnings:
 [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
 ----------------------------------------------------
-formula:np.log(TNC + 1) ~ diversity + UNT + persistence
+formula:np.log(TNC + 1) ~ persistence + diversity + UNT
                             OLS Regression Results                            
 ==============================================================================
 Dep. Variable:        np.log(TNC + 1)   R-squared:                       0.313
 Model:                            OLS   Adj. R-squared:                  0.312
 Method:                 Least Squares   F-statistic:                     1624.
 Date:                Thu, 15 Apr 2021   Prob (F-statistic):               0.00
-Time:                        14:36:56   Log-Likelihood:                -11620.
+Time:                        15:54:13   Log-Likelihood:                -11620.
 No. Observations:               10719   AIC:                         2.325e+04
 Df Residuals:                   10715   BIC:                         2.328e+04
 Df Model:                           3                                         
@@ -342,9 +342,9 @@ Covariance Type:            nonrobust
                   coef    std err          t      P>|t|      [0.025      0.975]
 -------------------------------------------------------------------------------
 Intercept       5.3997      0.039    139.394      0.000       5.324       5.476
+persistence   -65.2215      1.455    -44.816      0.000     -68.074     -62.369
 diversity       2.6048      0.062     42.250      0.000       2.484       2.726
 UNT            -0.0052      0.001     -3.506      0.000      -0.008      -0.002
-persistence   -65.2215      1.455    -44.816      0.000     -68.074     -62.369
 ==============================================================================
 Omnibus:                      121.987   Durbin-Watson:                   1.828
 Prob(Omnibus):                  0.000   Jarque-Bera (JB):              153.428
@@ -357,14 +357,14 @@ Warnings:
 [2] The condition number is large, 2.37e+03. This might indicate that there are
 strong multicollinearity or other numerical problems.
 ----------------------------------------------------
-formula:np.log(TNC + 1) ~ NUNT + UNT + persistence
+formula:np.log(TNC + 1) ~ NUNT + persistence + UNT
                             OLS Regression Results                            
 ==============================================================================
 Dep. Variable:        np.log(TNC + 1)   R-squared:                       0.439
 Model:                            OLS   Adj. R-squared:                  0.438
 Method:                 Least Squares   F-statistic:                     2791.
 Date:                Thu, 15 Apr 2021   Prob (F-statistic):               0.00
-Time:                        14:36:56   Log-Likelihood:                -10534.
+Time:                        15:54:13   Log-Likelihood:                -10534.
 No. Observations:               10719   AIC:                         2.108e+04
 Df Residuals:                   10715   BIC:                         2.110e+04
 Df Model:                           3                                         
@@ -374,8 +374,8 @@ Covariance Type:            nonrobust
 -------------------------------------------------------------------------------
 Intercept       7.1820      0.026    278.803      0.000       7.132       7.233
 NUNT           -5.5524      0.082    -67.773      0.000      -5.713      -5.392
-UNT             0.0361      0.001     25.882      0.000       0.033       0.039
 persistence   -52.7119      1.308    -40.290      0.000     -55.276     -50.147
+UNT             0.0361      0.001     25.882      0.000       0.033       0.039
 ==============================================================================
 Omnibus:                      270.222   Durbin-Watson:                   1.812
 Prob(Omnibus):                  0.000   Jarque-Bera (JB):              652.641
@@ -388,14 +388,14 @@ Warnings:
 [2] The condition number is large, 2.36e+03. This might indicate that there are
 strong multicollinearity or other numerical problems.
 ----------------------------------------------------
-formula:np.log(TNC + 1) ~ diversity + NUNT + UNT
+formula:np.log(TNC + 1) ~ NUNT + diversity + UNT
                             OLS Regression Results                            
 ==============================================================================
 Dep. Variable:        np.log(TNC + 1)   R-squared:                       0.376
 Model:                            OLS   Adj. R-squared:                  0.376
 Method:                 Least Squares   F-statistic:                     2157.
 Date:                Thu, 15 Apr 2021   Prob (F-statistic):               0.00
-Time:                        14:36:56   Log-Likelihood:                -11096.
+Time:                        15:54:13   Log-Likelihood:                -11096.
 No. Observations:               10719   AIC:                         2.220e+04
 Df Residuals:                   10715   BIC:                         2.223e+04
 Df Model:                           3                                         
@@ -404,8 +404,8 @@ Covariance Type:            nonrobust
                  coef    std err          t      P>|t|      [0.025      0.975]
 ------------------------------------------------------------------------------
 Intercept      5.6703      0.038    151.111      0.000       5.597       5.744
-diversity      1.2141      0.061     19.846      0.000       1.094       1.334
 NUNT          -5.2059      0.090    -57.568      0.000      -5.383      -5.029
+diversity      1.2141      0.061     19.846      0.000       1.094       1.334
 UNT            0.0658      0.001     55.804      0.000       0.063       0.068
 ==============================================================================
 Omnibus:                      131.079   Durbin-Watson:                   1.765
@@ -417,14 +417,14 @@ Kurtosis:                       3.710   Cond. No.                         167.
 Warnings:
 [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
 ----------------------------------------------------
-formula:np.log(TNC + 1) ~ diversity + NUNT + UNT
+formula:np.log(TNC + 1) ~ NUNT + diversity + UNT
                             OLS Regression Results                            
 ==============================================================================
 Dep. Variable:        np.log(TNC + 1)   R-squared:                       0.376
 Model:                            OLS   Adj. R-squared:                  0.376
 Method:                 Least Squares   F-statistic:                     2157.
 Date:                Thu, 15 Apr 2021   Prob (F-statistic):               0.00
-Time:                        14:36:56   Log-Likelihood:                -11096.
+Time:                        15:54:13   Log-Likelihood:                -11096.
 No. Observations:               10719   AIC:                         2.220e+04
 Df Residuals:                   10715   BIC:                         2.223e+04
 Df Model:                           3                                         
@@ -433,8 +433,8 @@ Covariance Type:            nonrobust
                  coef    std err          t      P>|t|      [0.025      0.975]
 ------------------------------------------------------------------------------
 Intercept      5.6703      0.038    151.111      0.000       5.597       5.744
-diversity      1.2141      0.061     19.846      0.000       1.094       1.334
 NUNT          -5.2059      0.090    -57.568      0.000      -5.383      -5.029
+diversity      1.2141      0.061     19.846      0.000       1.094       1.334
 UNT            0.0658      0.001     55.804      0.000       0.063       0.068
 ==============================================================================
 Omnibus:                      131.079   Durbin-Watson:                   1.765
@@ -446,14 +446,14 @@ Kurtosis:                       3.710   Cond. No.                         167.
 Warnings:
 [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
 ----------------------------------------------------
-formula:np.log(ANC+1) ~ diversity + NUNT + persistence
+formula:np.log(ANC+1) ~ NUNT + persistence + diversity
                             OLS Regression Results                            
 ==============================================================================
 Dep. Variable:        np.log(ANC + 1)   R-squared:                       0.060
 Model:                            OLS   Adj. R-squared:                  0.059
 Method:                 Least Squares   F-statistic:                     226.1
 Date:                Thu, 15 Apr 2021   Prob (F-statistic):          2.96e-142
-Time:                        14:36:56   Log-Likelihood:                -8556.5
+Time:                        15:54:13   Log-Likelihood:                -8556.5
 No. Observations:               10719   AIC:                         1.712e+04
 Df Residuals:                   10715   BIC:                         1.715e+04
 Df Model:                           3                                         
@@ -462,9 +462,9 @@ Covariance Type:            nonrobust
                   coef    std err          t      P>|t|      [0.025      0.975]
 -------------------------------------------------------------------------------
 Intercept       2.3037      0.032     72.380      0.000       2.241       2.366
-diversity       0.4366      0.047      9.291      0.000       0.344       0.529
 NUNT           -1.3484      0.066    -20.334      0.000      -1.478      -1.218
 persistence    -9.6820      0.850    -11.396      0.000     -11.347      -8.017
+diversity       0.4366      0.047      9.291      0.000       0.344       0.529
 ==============================================================================
 Omnibus:                      286.225   Durbin-Watson:                   1.790
 Prob(Omnibus):                  0.000   Jarque-Bera (JB):              325.513
@@ -475,14 +475,14 @@ Kurtosis:                       3.425   Cond. No.                         187.
 Warnings:
 [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
 ----------------------------------------------------
-formula:np.log(ANC+1) ~ diversity + UNT + persistence
+formula:np.log(ANC+1) ~ persistence + diversity + UNT
                             OLS Regression Results                            
 ==============================================================================
 Dep. Variable:        np.log(ANC + 1)   R-squared:                       0.067
 Model:                            OLS   Adj. R-squared:                  0.067
 Method:                 Least Squares   F-statistic:                     258.3
 Date:                Thu, 15 Apr 2021   Prob (F-statistic):          7.48e-162
-Time:                        14:36:57   Log-Likelihood:                -8511.3
+Time:                        15:54:13   Log-Likelihood:                -8511.3
 No. Observations:               10719   AIC:                         1.703e+04
 Df Residuals:                   10715   BIC:                         1.706e+04
 Df Model:                           3                                         
@@ -491,9 +491,9 @@ Covariance Type:            nonrobust
                   coef    std err          t      P>|t|      [0.025      0.975]
 -------------------------------------------------------------------------------
 Intercept       2.2283      0.029     76.875      0.000       2.171       2.285
+persistence   -22.1730      1.089    -20.361      0.000     -24.308     -20.038
 diversity       0.8383      0.046     18.173      0.000       0.748       0.929
 UNT            -0.0250      0.001    -22.533      0.000      -0.027      -0.023
-persistence   -22.1730      1.089    -20.361      0.000     -24.308     -20.038
 ==============================================================================
 Omnibus:                      267.827   Durbin-Watson:                   1.837
 Prob(Omnibus):                  0.000   Jarque-Bera (JB):              305.381
@@ -506,14 +506,14 @@ Warnings:
 [2] The condition number is large, 2.37e+03. This might indicate that there are
 strong multicollinearity or other numerical problems.
 ----------------------------------------------------
-formula:np.log(ANC+1) ~ NUNT + UNT + persistence
+formula:np.log(ANC+1) ~ NUNT + persistence + UNT
                             OLS Regression Results                            
 ==============================================================================
 Dep. Variable:        np.log(ANC + 1)   R-squared:                       0.066
 Model:                            OLS   Adj. R-squared:                  0.066
 Method:                 Least Squares   F-statistic:                     254.0
 Date:                Thu, 15 Apr 2021   Prob (F-statistic):          2.94e-159
-Time:                        14:36:57   Log-Likelihood:                -8517.3
+Time:                        15:54:13   Log-Likelihood:                -8517.3
 No. Observations:               10719   AIC:                         1.704e+04
 Df Residuals:                   10715   BIC:                         1.707e+04
 Df Model:                           3                                         
@@ -523,8 +523,8 @@ Covariance Type:            nonrobust
 -------------------------------------------------------------------------------
 Intercept       2.7397      0.021    128.363      0.000       2.698       2.781
 NUNT           -1.2103      0.068    -17.831      0.000      -1.343      -1.077
-UNT            -0.0149      0.001    -12.871      0.000      -0.017      -0.013
 persistence   -18.6958      1.084    -17.248      0.000     -20.821     -16.571
+UNT            -0.0149      0.001    -12.871      0.000      -0.017      -0.013
 ==============================================================================
 Omnibus:                      285.407   Durbin-Watson:                   1.824
 Prob(Omnibus):                  0.000   Jarque-Bera (JB):              332.424
@@ -537,14 +537,14 @@ Warnings:
 [2] The condition number is large, 2.36e+03. This might indicate that there are
 strong multicollinearity or other numerical problems.
 ----------------------------------------------------
-formula:np.log(ANC+1) ~ diversity + NUNT + UNT
+formula:np.log(ANC+1) ~ NUNT + diversity + UNT
                             OLS Regression Results                            
 ==============================================================================
 Dep. Variable:        np.log(ANC + 1)   R-squared:                       0.050
 Model:                            OLS   Adj. R-squared:                  0.050
 Method:                 Least Squares   F-statistic:                     189.5
 Date:                Thu, 15 Apr 2021   Prob (F-statistic):          9.46e-120
-Time:                        14:36:57   Log-Likelihood:                -8608.4
+Time:                        15:54:13   Log-Likelihood:                -8608.4
 No. Observations:               10719   AIC:                         1.722e+04
 Df Residuals:                   10715   BIC:                         1.725e+04
 Df Model:                           3                                         
@@ -553,8 +553,8 @@ Covariance Type:            nonrobust
                  coef    std err          t      P>|t|      [0.025      0.975]
 ------------------------------------------------------------------------------
 Intercept      2.1579      0.030     72.528      0.000       2.100       2.216
-diversity      0.5128      0.049     10.573      0.000       0.418       0.608
 NUNT          -1.0506      0.072    -14.653      0.000      -1.191      -0.910
+diversity      0.5128      0.049     10.573      0.000       0.418       0.608
 UNT           -0.0047      0.001     -5.031      0.000      -0.007      -0.003
 ==============================================================================
 Omnibus:                      233.056   Durbin-Watson:                   1.804
@@ -566,14 +566,14 @@ Kurtosis:                       3.451   Cond. No.                         167.
 Warnings:
 [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
 ----------------------------------------------------
-formula:np.log(ANC+1) ~ diversity + NUNT + UNT
+formula:np.log(ANC+1) ~ NUNT + diversity + UNT
                             OLS Regression Results                            
 ==============================================================================
 Dep. Variable:        np.log(ANC + 1)   R-squared:                       0.050
 Model:                            OLS   Adj. R-squared:                  0.050
 Method:                 Least Squares   F-statistic:                     189.5
 Date:                Thu, 15 Apr 2021   Prob (F-statistic):          9.46e-120
-Time:                        14:36:57   Log-Likelihood:                -8608.4
+Time:                        15:54:14   Log-Likelihood:                -8608.4
 No. Observations:               10719   AIC:                         1.722e+04
 Df Residuals:                   10715   BIC:                         1.725e+04
 Df Model:                           3                                         
@@ -582,8 +582,8 @@ Covariance Type:            nonrobust
                  coef    std err          t      P>|t|      [0.025      0.975]
 ------------------------------------------------------------------------------
 Intercept      2.1579      0.030     72.528      0.000       2.100       2.216
-diversity      0.5128      0.049     10.573      0.000       0.418       0.608
 NUNT          -1.0506      0.072    -14.653      0.000      -1.191      -0.910
+diversity      0.5128      0.049     10.573      0.000       0.418       0.608
 UNT           -0.0047      0.001     -5.031      0.000      -0.007      -0.003
 ==============================================================================
 Omnibus:                      233.056   Durbin-Watson:                   1.804

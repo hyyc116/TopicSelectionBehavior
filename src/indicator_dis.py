@@ -106,6 +106,10 @@ def rel_two_attrs(data, x, y, ax):
     sns.lineplot(data=data, x=x, y=y, ax=ax, alpha=0.5, ci=None)
     xs, ys = zip(*lowess(data[y], data[x], frac=1. / 3, it=0))
 
+    miny = np.min(data[y])
+    maxy = np.max(data[y])
+    ax.set_ylim(miny / 2, maxy * 1.5)
+
     # ax.plot(xs, ys)
 
     # xs, ys = zip(*lowess(data[y], data[x], frac=1. / 3))
@@ -184,6 +188,15 @@ def regression_analysis():
     open('data/result.txt', 'w').write('\n'.join(results))
 
 
+    df1 = pd.DataFrame(data,
+                       columns=[
+                           'hindex', 'productivity', 'TNC', 'ANC', 'UNT',
+                           'NUNT', 'diversity', 'persistence'
+                       ])
+
+    open('data/corr.txt', 'w').write(str(df1.corr('spearman')))
+
+
 def formulate_ols(data, formula):
 
     lines = []
@@ -204,6 +217,6 @@ def formulate_ols(data, formula):
 
 if __name__ == "__main__":
 
-    # variable_dis()
+    variable_dis()
 
-    regression_analysis()
+    # regression_analysis()
