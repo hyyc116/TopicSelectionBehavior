@@ -1,41 +1,106 @@
+
+
 ----------------------------------------------------
-formula:hindex ~ NUNT + persistence + diversity
+formula:hindex ~ UNT + diversity
                             OLS Regression Results                            
 ==============================================================================
-Dep. Variable:                 hindex   R-squared:                       0.443
-Model:                            OLS   Adj. R-squared:                  0.442
-Method:                 Least Squares   F-statistic:                     2836.
-Date:                Thu, 15 Apr 2021   Prob (F-statistic):               0.00
-Time:                        15:54:13   Log-Likelihood:                -30276.
-No. Observations:               10719   AIC:                         6.056e+04
-Df Residuals:                   10715   BIC:                         6.059e+04
-Df Model:                           3                                         
+Dep. Variable:                 hindex   R-squared:                       0.169
+Model:                            OLS   Adj. R-squared:                  0.169
+Method:                 Least Squares   F-statistic:                     1089.
+Date:                Fri, 16 Apr 2021   Prob (F-statistic):               0.00
+Time:                        19:30:10   Log-Likelihood:                -32417.
+No. Observations:               10719   AIC:                         6.484e+04
+Df Residuals:                   10716   BIC:                         6.486e+04
+Df Model:                           2                                         
 Covariance Type:            nonrobust                                         
-===============================================================================
-                  coef    std err          t      P>|t|      [0.025      0.975]
--------------------------------------------------------------------------------
-Intercept      14.6381      0.241     60.632      0.000      14.165      15.111
-NUNT          -27.6275      0.503    -54.925      0.000     -28.613     -26.641
-persistence  -433.2414      6.445    -67.224      0.000    -445.874    -420.608
-diversity      11.7621      0.356     33.002      0.000      11.064      12.461
 ==============================================================================
-Omnibus:                     2724.690   Durbin-Watson:                   1.887
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):            10512.584
-Skew:                           1.223   Prob(JB):                         0.00
-Kurtosis:                       7.190   Cond. No.                         187.
+                 coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept      1.9616      0.230      8.526      0.000       1.511       2.413
+UNT            0.2095      0.008     26.699      0.000       0.194       0.225
+diversity     14.7786      0.426     34.683      0.000      13.943      15.614
+==============================================================================
+Omnibus:                     3179.216   Durbin-Watson:                   1.831
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):            11885.022
+Skew:                           1.450   Prob(JB):                         0.00
+Kurtosis:                       7.266   Cond. No.                         112.
 ==============================================================================
 
 Warnings:
 [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+
+
 ----------------------------------------------------
-formula:hindex ~ persistence + diversity + UNT
+formula:hindex ~ diversity + consistency
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                 hindex   R-squared:                       0.286
+Model:                            OLS   Adj. R-squared:                  0.286
+Method:                 Least Squares   F-statistic:                     2143.
+Date:                Fri, 16 Apr 2021   Prob (F-statistic):               0.00
+Time:                        19:30:10   Log-Likelihood:                -31605.
+No. Observations:               10719   AIC:                         6.322e+04
+Df Residuals:                   10716   BIC:                         6.324e+04
+Df Model:                           2                                         
+Covariance Type:            nonrobust                                         
+===============================================================================
+                  coef    std err          t      P>|t|      [0.025      0.975]
+-------------------------------------------------------------------------------
+Intercept       6.8276      0.221     30.915      0.000       6.395       7.261
+diversity      16.3865      0.392     41.798      0.000      15.618      17.155
+consistency  -363.3859      7.152    -50.809      0.000    -377.405    -349.367
+==============================================================================
+Omnibus:                     3089.526   Durbin-Watson:                   1.842
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):            11358.433
+Skew:                           1.413   Prob(JB):                         0.00
+Kurtosis:                       7.177   Cond. No.                         181.
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+
+
+----------------------------------------------------
+formula:hindex ~ UNT + consistency
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                 hindex   R-squared:                       0.169
+Model:                            OLS   Adj. R-squared:                  0.169
+Method:                 Least Squares   F-statistic:                     1093.
+Date:                Fri, 16 Apr 2021   Prob (F-statistic):               0.00
+Time:                        19:30:10   Log-Likelihood:                -32413.
+No. Observations:               10719   AIC:                         6.483e+04
+Df Residuals:                   10716   BIC:                         6.485e+04
+Df Model:                           2                                         
+Covariance Type:            nonrobust                                         
+===============================================================================
+                  coef    std err          t      P>|t|      [0.025      0.975]
+-------------------------------------------------------------------------------
+Intercept      15.0680      0.186     80.889      0.000      14.703      15.433
+UNT             0.0164      0.010      1.616      0.106      -0.003       0.036
+consistency  -349.8740     10.055    -34.795      0.000    -369.584    -330.164
+==============================================================================
+Omnibus:                     3182.423   Durbin-Watson:                   1.841
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):            12726.137
+Skew:                           1.427   Prob(JB):                         0.00
+Kurtosis:                       7.512   Cond. No.                     2.35e+03
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 2.35e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.
+
+
+----------------------------------------------------
+formula:hindex ~ UNT + diversity + consistency
                             OLS Regression Results                            
 ==============================================================================
 Dep. Variable:                 hindex   R-squared:                       0.288
 Model:                            OLS   Adj. R-squared:                  0.287
 Method:                 Least Squares   F-statistic:                     1442.
-Date:                Thu, 15 Apr 2021   Prob (F-statistic):               0.00
-Time:                        15:54:13   Log-Likelihood:                -31590.
+Date:                Fri, 16 Apr 2021   Prob (F-statistic):               0.00
+Time:                        19:30:10   Log-Likelihood:                -31590.
 No. Observations:               10719   AIC:                         6.319e+04
 Df Residuals:                   10715   BIC:                         6.322e+04
 Df Model:                           3                                         
@@ -44,9 +109,9 @@ Covariance Type:            nonrobust
                   coef    std err          t      P>|t|      [0.025      0.975]
 -------------------------------------------------------------------------------
 Intercept       7.4613      0.250     29.892      0.000       6.972       7.951
-persistence  -396.3356      9.378    -42.263      0.000    -414.718    -377.954
-diversity      16.7513      0.397     42.167      0.000      15.973      17.530
 UNT            -0.0517      0.010     -5.422      0.000      -0.070      -0.033
+diversity      16.7513      0.397     42.167      0.000      15.973      17.530
+consistency  -396.3356      9.378    -42.263      0.000    -414.718    -377.954
 ==============================================================================
 Omnibus:                     3140.635   Durbin-Watson:                   1.850
 Prob(Omnibus):                  0.000   Jarque-Bera (JB):            11714.005
@@ -58,133 +123,142 @@ Warnings:
 [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
 [2] The condition number is large, 2.37e+03. This might indicate that there are
 strong multicollinearity or other numerical problems.
+
+
 ----------------------------------------------------
-formula:hindex ~ NUNT + persistence + UNT
+formula:hindex ~ UNT + diversity + consistency
                             OLS Regression Results                            
 ==============================================================================
-Dep. Variable:                 hindex   R-squared:                       0.417
-Model:                            OLS   Adj. R-squared:                  0.416
-Method:                 Least Squares   F-statistic:                     2550.
-Date:                Thu, 15 Apr 2021   Prob (F-statistic):               0.00
-Time:                        15:54:13   Log-Likelihood:                -30521.
-No. Observations:               10719   AIC:                         6.105e+04
-Df Residuals:                   10715   BIC:                         6.108e+04
+Dep. Variable:                 hindex   R-squared:                       0.288
+Model:                            OLS   Adj. R-squared:                  0.287
+Method:                 Least Squares   F-statistic:                     1442.
+Date:                Fri, 16 Apr 2021   Prob (F-statistic):               0.00
+Time:                        19:30:10   Log-Likelihood:                -31590.
+No. Observations:               10719   AIC:                         6.319e+04
+Df Residuals:                   10715   BIC:                         6.322e+04
 Df Model:                           3                                         
 Covariance Type:            nonrobust                                         
 ===============================================================================
                   coef    std err          t      P>|t|      [0.025      0.975]
 -------------------------------------------------------------------------------
-Intercept      18.9135      0.166    113.769      0.000      18.588      19.239
-NUNT          -35.6168      0.529    -67.364      0.000     -36.653     -34.580
-persistence  -315.9722      8.443    -37.423      0.000    -332.522    -299.422
-UNT             0.2132      0.009     23.696      0.000       0.196       0.231
+Intercept       7.4613      0.250     29.892      0.000       6.972       7.951
+UNT            -0.0517      0.010     -5.422      0.000      -0.070      -0.033
+diversity      16.7513      0.397     42.167      0.000      15.973      17.530
+consistency  -396.3356      9.378    -42.263      0.000    -414.718    -377.954
 ==============================================================================
-Omnibus:                     2864.428   Durbin-Watson:                   1.842
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):            11859.002
-Skew:                           1.264   Prob(JB):                         0.00
-Kurtosis:                       7.490   Cond. No.                     2.36e+03
+Omnibus:                     3140.635   Durbin-Watson:                   1.850
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):            11714.005
+Skew:                           1.432   Prob(JB):                         0.00
+Kurtosis:                       7.245   Cond. No.                     2.37e+03
 ==============================================================================
 
 Warnings:
 [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
-[2] The condition number is large, 2.36e+03. This might indicate that there are
+[2] The condition number is large, 2.37e+03. This might indicate that there are
 strong multicollinearity or other numerical problems.
+
+
 ----------------------------------------------------
-formula:hindex ~ NUNT + diversity + UNT
+formula:productivity ~ UNT + diversity
                             OLS Regression Results                            
 ==============================================================================
-Dep. Variable:                 hindex   R-squared:                       0.365
-Model:                            OLS   Adj. R-squared:                  0.365
-Method:                 Least Squares   F-statistic:                     2052.
-Date:                Thu, 15 Apr 2021   Prob (F-statistic):               0.00
-Time:                        15:54:13   Log-Likelihood:                -30975.
-No. Observations:               10719   AIC:                         6.196e+04
-Df Residuals:                   10715   BIC:                         6.199e+04
-Df Model:                           3                                         
+Dep. Variable:           productivity   R-squared:                       0.478
+Model:                            OLS   Adj. R-squared:                  0.478
+Method:                 Least Squares   F-statistic:                     4915.
+Date:                Fri, 16 Apr 2021   Prob (F-statistic):               0.00
+Time:                        19:30:10   Log-Likelihood:                -55936.
+No. Observations:               10719   AIC:                         1.119e+05
+Df Residuals:                   10716   BIC:                         1.119e+05
+Df Model:                           2                                         
 Covariance Type:            nonrobust                                         
 ==============================================================================
                  coef    std err          t      P>|t|      [0.025      0.975]
 ------------------------------------------------------------------------------
-Intercept      9.4652      0.240     39.483      0.000       8.995       9.935
-NUNT         -33.2279      0.578    -57.516      0.000     -34.360     -32.095
-diversity      7.9744      0.391     20.404      0.000       7.208       8.741
-UNT            0.3881      0.008     51.536      0.000       0.373       0.403
+Intercept    -50.9323      2.064    -24.672      0.000     -54.979     -46.886
+UNT            6.4300      0.070     91.314      0.000       6.292       6.568
+diversity    103.5320      3.823     27.079      0.000      96.038     111.026
 ==============================================================================
-Omnibus:                     2833.029   Durbin-Watson:                   1.796
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):            11578.820
-Skew:                           1.254   Prob(JB):                         0.00
-Kurtosis:                       7.431   Cond. No.                         167.
-==============================================================================
-
-Warnings:
-[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
-----------------------------------------------------
-formula:hindex ~ NUNT + diversity + UNT
-                            OLS Regression Results                            
-==============================================================================
-Dep. Variable:                 hindex   R-squared:                       0.365
-Model:                            OLS   Adj. R-squared:                  0.365
-Method:                 Least Squares   F-statistic:                     2052.
-Date:                Thu, 15 Apr 2021   Prob (F-statistic):               0.00
-Time:                        15:54:13   Log-Likelihood:                -30975.
-No. Observations:               10719   AIC:                         6.196e+04
-Df Residuals:                   10715   BIC:                         6.199e+04
-Df Model:                           3                                         
-Covariance Type:            nonrobust                                         
-==============================================================================
-                 coef    std err          t      P>|t|      [0.025      0.975]
-------------------------------------------------------------------------------
-Intercept      9.4652      0.240     39.483      0.000       8.995       9.935
-NUNT         -33.2279      0.578    -57.516      0.000     -34.360     -32.095
-diversity      7.9744      0.391     20.404      0.000       7.208       8.741
-UNT            0.3881      0.008     51.536      0.000       0.373       0.403
-==============================================================================
-Omnibus:                     2833.029   Durbin-Watson:                   1.796
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):            11578.820
-Skew:                           1.254   Prob(JB):                         0.00
-Kurtosis:                       7.431   Cond. No.                         167.
+Omnibus:                    13701.834   Durbin-Watson:                   1.750
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):          4667154.323
+Skew:                           6.817   Prob(JB):                         0.00
+Kurtosis:                     104.311   Cond. No.                         112.
 ==============================================================================
 
 Warnings:
 [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+
+
 ----------------------------------------------------
-formula:productivity ~ NUNT + persistence + diversity
+formula:productivity ~ diversity + consistency
                             OLS Regression Results                            
 ==============================================================================
-Dep. Variable:           productivity   R-squared:                       0.368
-Model:                            OLS   Adj. R-squared:                  0.368
-Method:                 Least Squares   F-statistic:                     2080.
-Date:                Thu, 15 Apr 2021   Prob (F-statistic):               0.00
-Time:                        15:54:13   Log-Likelihood:                -56966.
-No. Observations:               10719   AIC:                         1.139e+05
-Df Residuals:                   10715   BIC:                         1.140e+05
-Df Model:                           3                                         
+Dep. Variable:           productivity   R-squared:                       0.276
+Model:                            OLS   Adj. R-squared:                  0.276
+Method:                 Least Squares   F-statistic:                     2045.
+Date:                Fri, 16 Apr 2021   Prob (F-statistic):               0.00
+Time:                        19:30:10   Log-Likelihood:                -57693.
+No. Observations:               10719   AIC:                         1.154e+05
+Df Residuals:                   10716   BIC:                         1.154e+05
+Df Model:                           2                                         
 Covariance Type:            nonrobust                                         
 ===============================================================================
                   coef    std err          t      P>|t|      [0.025      0.975]
 -------------------------------------------------------------------------------
-Intercept      99.3156      2.912     34.107      0.000      93.608     105.023
-NUNT         -239.3504      6.067    -39.452      0.000    -251.242    -227.458
-persistence -5081.9241     77.731    -65.378      0.000   -5234.292   -4929.556
-diversity     109.0369      4.299     25.365      0.000     100.611     117.463
+Intercept      31.6498      2.518     12.569      0.000      26.714      36.586
+diversity     149.1000      4.470     33.356      0.000     140.338     157.862
+consistency -4476.7311     81.546    -54.898      0.000   -4636.576   -4316.886
 ==============================================================================
-Omnibus:                    17472.657   Durbin-Watson:                   1.472
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):         14387086.493
-Skew:                          10.778   Prob(JB):                         0.00
-Kurtosis:                     181.180   Cond. No.                         187.
+Omnibus:                    16825.803   Durbin-Watson:                   1.537
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):         11077731.034
+Skew:                          10.041   Prob(JB):                         0.00
+Kurtosis:                     159.205   Cond. No.                         181.
 ==============================================================================
 
 Warnings:
 [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+
+
 ----------------------------------------------------
-formula:productivity ~ persistence + diversity + UNT
+formula:productivity ~ UNT + consistency
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:           productivity   R-squared:                       0.444
+Model:                            OLS   Adj. R-squared:                  0.443
+Method:                 Least Squares   F-statistic:                     4271.
+Date:                Fri, 16 Apr 2021   Prob (F-statistic):               0.00
+Time:                        19:30:10   Log-Likelihood:                -56283.
+No. Observations:               10719   AIC:                         1.126e+05
+Df Residuals:                   10716   BIC:                         1.126e+05
+Df Model:                           2                                         
+Covariance Type:            nonrobust                                         
+===============================================================================
+                  coef    std err          t      P>|t|      [0.025      0.975]
+-------------------------------------------------------------------------------
+Intercept       6.6757      1.727      3.865      0.000       3.290      10.061
+UNT             6.4316      0.094     68.337      0.000       6.247       6.616
+consistency  -360.3468     93.225     -3.865      0.000    -543.086    -177.608
+==============================================================================
+Omnibus:                    13192.302   Durbin-Watson:                   1.754
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):          3918246.927
+Skew:                           6.384   Prob(JB):                         0.00
+Kurtosis:                      95.790   Cond. No.                     2.35e+03
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 2.35e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.
+
+
+----------------------------------------------------
+formula:productivity ~ UNT + diversity + consistency
                             OLS Regression Results                            
 ==============================================================================
 Dep. Variable:           productivity   R-squared:                       0.481
 Model:                            OLS   Adj. R-squared:                  0.481
 Method:                 Least Squares   F-statistic:                     3310.
-Date:                Thu, 15 Apr 2021   Prob (F-statistic):               0.00
-Time:                        15:54:13   Log-Likelihood:                -55910.
+Date:                Fri, 16 Apr 2021   Prob (F-statistic):               0.00
+Time:                        19:30:10   Log-Likelihood:                -55910.
 No. Observations:               10719   AIC:                         1.118e+05
 Df Residuals:                   10715   BIC:                         1.119e+05
 Df Model:                           3                                         
@@ -193,9 +267,9 @@ Covariance Type:            nonrobust
                   coef    std err          t      P>|t|      [0.025      0.975]
 -------------------------------------------------------------------------------
 Intercept     -41.8215      2.413    -17.330      0.000     -46.552     -37.091
-persistence  -656.5675     90.666     -7.242      0.000    -834.289    -478.846
-diversity     106.7999      3.841     27.807      0.000      99.271     114.329
 UNT             5.9972      0.092     65.024      0.000       5.816       6.178
+diversity     106.7999      3.841     27.807      0.000      99.271     114.329
+consistency  -656.5675     90.666     -7.242      0.000    -834.289    -478.846
 ==============================================================================
 Omnibus:                    14075.516   Durbin-Watson:                   1.738
 Prob(Omnibus):                  0.000   Jarque-Bera (JB):          5343910.672
@@ -207,133 +281,142 @@ Warnings:
 [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
 [2] The condition number is large, 2.37e+03. This might indicate that there are
 strong multicollinearity or other numerical problems.
+
+
 ----------------------------------------------------
-formula:productivity ~ NUNT + persistence + UNT
+formula:productivity ~ UNT + diversity + consistency
                             OLS Regression Results                            
 ==============================================================================
-Dep. Variable:           productivity   R-squared:                       0.745
-Model:                            OLS   Adj. R-squared:                  0.745
-Method:                 Least Squares   F-statistic:                 1.042e+04
-Date:                Thu, 15 Apr 2021   Prob (F-statistic):               0.00
-Time:                        15:54:13   Log-Likelihood:                -52107.
-No. Observations:               10719   AIC:                         1.042e+05
-Df Residuals:                   10715   BIC:                         1.043e+05
+Dep. Variable:           productivity   R-squared:                       0.481
+Model:                            OLS   Adj. R-squared:                  0.481
+Method:                 Least Squares   F-statistic:                     3310.
+Date:                Fri, 16 Apr 2021   Prob (F-statistic):               0.00
+Time:                        19:30:10   Log-Likelihood:                -55910.
+No. Observations:               10719   AIC:                         1.118e+05
+Df Residuals:                   10715   BIC:                         1.119e+05
 Df Model:                           3                                         
 Covariance Type:            nonrobust                                         
 ===============================================================================
                   coef    std err          t      P>|t|      [0.025      0.975]
 -------------------------------------------------------------------------------
-Intercept      54.7635      1.246     43.968      0.000      52.322      57.205
-NUNT         -445.3877      3.961   -112.437      0.000    -453.152    -437.623
-persistence    63.5964     63.258      1.005      0.315     -60.400     187.593
-UNT             8.8922      0.067    131.931      0.000       8.760       9.024
+Intercept     -41.8215      2.413    -17.330      0.000     -46.552     -37.091
+UNT             5.9972      0.092     65.024      0.000       5.816       6.178
+diversity     106.7999      3.841     27.807      0.000      99.271     114.329
+consistency  -656.5675     90.666     -7.242      0.000    -834.289    -478.846
 ==============================================================================
-Omnibus:                    16298.736   Durbin-Watson:                   1.851
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):         14735523.010
-Skew:                           9.225   Prob(JB):                         0.00
-Kurtosis:                     183.700   Cond. No.                     2.36e+03
+Omnibus:                    14075.516   Durbin-Watson:                   1.738
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):          5343910.672
+Skew:                           7.145   Prob(JB):                         0.00
+Kurtosis:                     111.448   Cond. No.                     2.37e+03
 ==============================================================================
 
 Warnings:
 [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
-[2] The condition number is large, 2.36e+03. This might indicate that there are
+[2] The condition number is large, 2.37e+03. This might indicate that there are
 strong multicollinearity or other numerical problems.
+
+
 ----------------------------------------------------
-formula:productivity ~ NUNT + diversity + UNT
+formula:np.log(TNC + 1) ~ UNT + diversity
                             OLS Regression Results                            
 ==============================================================================
-Dep. Variable:           productivity   R-squared:                       0.745
-Model:                            OLS   Adj. R-squared:                  0.745
-Method:                 Least Squares   F-statistic:                 1.045e+04
-Date:                Thu, 15 Apr 2021   Prob (F-statistic):               0.00
-Time:                        15:54:13   Log-Likelihood:                -52096.
-No. Observations:               10719   AIC:                         1.042e+05
-Df Residuals:                   10715   BIC:                         1.042e+05
-Df Model:                           3                                         
+Dep. Variable:        np.log(TNC + 1)   R-squared:                       0.184
+Model:                            OLS   Adj. R-squared:                  0.183
+Method:                 Least Squares   F-statistic:                     1205.
+Date:                Fri, 16 Apr 2021   Prob (F-statistic):               0.00
+Time:                        19:30:10   Log-Likelihood:                -12541.
+No. Observations:               10719   AIC:                         2.509e+04
+Df Residuals:                   10716   BIC:                         2.511e+04
+Df Model:                           2                                         
 Covariance Type:            nonrobust                                         
 ==============================================================================
                  coef    std err          t      P>|t|      [0.025      0.975]
 ------------------------------------------------------------------------------
-Intercept     48.2161      1.720     28.037      0.000      44.845      51.587
-NUNT        -439.0537      4.144   -105.938      0.000    -447.178    -430.930
-diversity     13.6252      2.804      4.860      0.000       8.129      19.121
-UNT            8.7890      0.054    162.707      0.000       8.683       8.895
+Intercept      4.4947      0.036    124.783      0.000       4.424       4.565
+UNT            0.0378      0.001     30.766      0.000       0.035       0.040
+diversity      2.2801      0.067     34.179      0.000       2.149       2.411
 ==============================================================================
-Omnibus:                    16446.664   Durbin-Watson:                   1.850
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):         15394323.678
-Skew:                           9.390   Prob(JB):                         0.00
-Kurtosis:                     187.704   Cond. No.                         167.
-==============================================================================
-
-Warnings:
-[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
-----------------------------------------------------
-formula:productivity ~ NUNT + diversity + UNT
-                            OLS Regression Results                            
-==============================================================================
-Dep. Variable:           productivity   R-squared:                       0.745
-Model:                            OLS   Adj. R-squared:                  0.745
-Method:                 Least Squares   F-statistic:                 1.045e+04
-Date:                Thu, 15 Apr 2021   Prob (F-statistic):               0.00
-Time:                        15:54:13   Log-Likelihood:                -52096.
-No. Observations:               10719   AIC:                         1.042e+05
-Df Residuals:                   10715   BIC:                         1.042e+05
-Df Model:                           3                                         
-Covariance Type:            nonrobust                                         
-==============================================================================
-                 coef    std err          t      P>|t|      [0.025      0.975]
-------------------------------------------------------------------------------
-Intercept     48.2161      1.720     28.037      0.000      44.845      51.587
-NUNT        -439.0537      4.144   -105.938      0.000    -447.178    -430.930
-diversity     13.6252      2.804      4.860      0.000       8.129      19.121
-UNT            8.7890      0.054    162.707      0.000       8.683       8.895
-==============================================================================
-Omnibus:                    16446.664   Durbin-Watson:                   1.850
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):         15394323.678
-Skew:                           9.390   Prob(JB):                         0.00
-Kurtosis:                     187.704   Cond. No.                         167.
+Omnibus:                       45.167   Durbin-Watson:                   1.809
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               49.562
+Skew:                           0.120   Prob(JB):                     1.73e-11
+Kurtosis:                       3.231   Cond. No.                         112.
 ==============================================================================
 
 Warnings:
 [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+
+
 ----------------------------------------------------
-formula:np.log(TNC + 1) ~ NUNT + persistence + diversity
+formula:np.log(TNC + 1) ~ diversity + consistency
                             OLS Regression Results                            
 ==============================================================================
-Dep. Variable:        np.log(TNC + 1)   R-squared:                       0.460
-Model:                            OLS   Adj. R-squared:                  0.460
-Method:                 Least Squares   F-statistic:                     3044.
-Date:                Thu, 15 Apr 2021   Prob (F-statistic):               0.00
-Time:                        15:54:13   Log-Likelihood:                -10324.
-No. Observations:               10719   AIC:                         2.066e+04
-Df Residuals:                   10715   BIC:                         2.069e+04
-Df Model:                           3                                         
+Dep. Variable:        np.log(TNC + 1)   R-squared:                       0.312
+Model:                            OLS   Adj. R-squared:                  0.312
+Method:                 Least Squares   F-statistic:                     2427.
+Date:                Fri, 16 Apr 2021   Prob (F-statistic):               0.00
+Time:                        19:30:10   Log-Likelihood:                -11626.
+No. Observations:               10719   AIC:                         2.326e+04
+Df Residuals:                   10716   BIC:                         2.328e+04
+Df Model:                           2                                         
 Covariance Type:            nonrobust                                         
 ===============================================================================
                   coef    std err          t      P>|t|      [0.025      0.975]
 -------------------------------------------------------------------------------
-Intercept       6.5361      0.038    174.141      0.000       6.463       6.610
-NUNT           -4.2446      0.078    -54.278      0.000      -4.398      -4.091
-persistence   -72.6478      1.002    -72.507      0.000     -74.612     -70.684
-diversity       1.8577      0.055     33.526      0.000       1.749       1.966
+Intercept       5.3362      0.034    155.813      0.000       5.269       5.403
+diversity       2.5682      0.061     42.245      0.000       2.449       2.687
+consistency   -61.9154      1.109    -55.828      0.000     -64.089     -59.741
 ==============================================================================
-Omnibus:                      179.218   Durbin-Watson:                   1.859
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):              344.668
-Skew:                           0.070   Prob(JB):                     1.43e-75
-Kurtosis:                       3.867   Cond. No.                         187.
+Omnibus:                      107.048   Durbin-Watson:                   1.824
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):              133.164
+Skew:                           0.168   Prob(JB):                     1.21e-29
+Kurtosis:                       3.431   Cond. No.                         181.
 ==============================================================================
 
 Warnings:
 [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+
+
 ----------------------------------------------------
-formula:np.log(TNC + 1) ~ persistence + diversity + UNT
+formula:np.log(TNC + 1) ~ UNT + consistency
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:        np.log(TNC + 1)   R-squared:                       0.198
+Model:                            OLS   Adj. R-squared:                  0.198
+Method:                 Least Squares   F-statistic:                     1323.
+Date:                Fri, 16 Apr 2021   Prob (F-statistic):               0.00
+Time:                        19:30:10   Log-Likelihood:                -12446.
+No. Observations:               10719   AIC:                         2.490e+04
+Df Residuals:                   10716   BIC:                         2.492e+04
+Df Model:                           2                                         
+Covariance Type:            nonrobust                                         
+===============================================================================
+                  coef    std err          t      P>|t|      [0.025      0.975]
+-------------------------------------------------------------------------------
+Intercept       6.5826      0.029    227.637      0.000       6.526       6.639
+UNT             0.0054      0.002      3.429      0.001       0.002       0.008
+consistency   -57.9969      1.561    -37.155      0.000     -61.057     -54.937
+==============================================================================
+Omnibus:                       53.921   Durbin-Watson:                   1.817
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               72.554
+Skew:                           0.059   Prob(JB):                     1.76e-16
+Kurtosis:                       3.385   Cond. No.                     2.35e+03
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 2.35e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.
+
+
+----------------------------------------------------
+formula:np.log(TNC + 1) ~ UNT + diversity + consistency
                             OLS Regression Results                            
 ==============================================================================
 Dep. Variable:        np.log(TNC + 1)   R-squared:                       0.313
 Model:                            OLS   Adj. R-squared:                  0.312
 Method:                 Least Squares   F-statistic:                     1624.
-Date:                Thu, 15 Apr 2021   Prob (F-statistic):               0.00
-Time:                        15:54:13   Log-Likelihood:                -11620.
+Date:                Fri, 16 Apr 2021   Prob (F-statistic):               0.00
+Time:                        19:30:10   Log-Likelihood:                -11620.
 No. Observations:               10719   AIC:                         2.325e+04
 Df Residuals:                   10715   BIC:                         2.328e+04
 Df Model:                           3                                         
@@ -342,9 +425,9 @@ Covariance Type:            nonrobust
                   coef    std err          t      P>|t|      [0.025      0.975]
 -------------------------------------------------------------------------------
 Intercept       5.3997      0.039    139.394      0.000       5.324       5.476
-persistence   -65.2215      1.455    -44.816      0.000     -68.074     -62.369
-diversity       2.6048      0.062     42.250      0.000       2.484       2.726
 UNT            -0.0052      0.001     -3.506      0.000      -0.008      -0.002
+diversity       2.6048      0.062     42.250      0.000       2.484       2.726
+consistency   -65.2215      1.455    -44.816      0.000     -68.074     -62.369
 ==============================================================================
 Omnibus:                      121.987   Durbin-Watson:                   1.828
 Prob(Omnibus):                  0.000   Jarque-Bera (JB):              153.428
@@ -356,241 +439,36 @@ Warnings:
 [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
 [2] The condition number is large, 2.37e+03. This might indicate that there are
 strong multicollinearity or other numerical problems.
+
+
 ----------------------------------------------------
-formula:np.log(TNC + 1) ~ NUNT + persistence + UNT
+formula:np.log(TNC + 1) ~ UNT + diversity + consistency
                             OLS Regression Results                            
 ==============================================================================
-Dep. Variable:        np.log(TNC + 1)   R-squared:                       0.439
-Model:                            OLS   Adj. R-squared:                  0.438
-Method:                 Least Squares   F-statistic:                     2791.
-Date:                Thu, 15 Apr 2021   Prob (F-statistic):               0.00
-Time:                        15:54:13   Log-Likelihood:                -10534.
-No. Observations:               10719   AIC:                         2.108e+04
-Df Residuals:                   10715   BIC:                         2.110e+04
+Dep. Variable:        np.log(TNC + 1)   R-squared:                       0.313
+Model:                            OLS   Adj. R-squared:                  0.312
+Method:                 Least Squares   F-statistic:                     1624.
+Date:                Fri, 16 Apr 2021   Prob (F-statistic):               0.00
+Time:                        19:30:10   Log-Likelihood:                -11620.
+No. Observations:               10719   AIC:                         2.325e+04
+Df Residuals:                   10715   BIC:                         2.328e+04
 Df Model:                           3                                         
 Covariance Type:            nonrobust                                         
 ===============================================================================
                   coef    std err          t      P>|t|      [0.025      0.975]
 -------------------------------------------------------------------------------
-Intercept       7.1820      0.026    278.803      0.000       7.132       7.233
-NUNT           -5.5524      0.082    -67.773      0.000      -5.713      -5.392
-persistence   -52.7119      1.308    -40.290      0.000     -55.276     -50.147
-UNT             0.0361      0.001     25.882      0.000       0.033       0.039
+Intercept       5.3997      0.039    139.394      0.000       5.324       5.476
+UNT            -0.0052      0.001     -3.506      0.000      -0.008      -0.002
+diversity       2.6048      0.062     42.250      0.000       2.484       2.726
+consistency   -65.2215      1.455    -44.816      0.000     -68.074     -62.369
 ==============================================================================
-Omnibus:                      270.222   Durbin-Watson:                   1.812
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):              652.641
-Skew:                           0.018   Prob(JB):                    1.91e-142
-Kurtosis:                       4.208   Cond. No.                     2.36e+03
-==============================================================================
-
-Warnings:
-[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
-[2] The condition number is large, 2.36e+03. This might indicate that there are
-strong multicollinearity or other numerical problems.
-----------------------------------------------------
-formula:np.log(TNC + 1) ~ NUNT + diversity + UNT
-                            OLS Regression Results                            
-==============================================================================
-Dep. Variable:        np.log(TNC + 1)   R-squared:                       0.376
-Model:                            OLS   Adj. R-squared:                  0.376
-Method:                 Least Squares   F-statistic:                     2157.
-Date:                Thu, 15 Apr 2021   Prob (F-statistic):               0.00
-Time:                        15:54:13   Log-Likelihood:                -11096.
-No. Observations:               10719   AIC:                         2.220e+04
-Df Residuals:                   10715   BIC:                         2.223e+04
-Df Model:                           3                                         
-Covariance Type:            nonrobust                                         
-==============================================================================
-                 coef    std err          t      P>|t|      [0.025      0.975]
-------------------------------------------------------------------------------
-Intercept      5.6703      0.038    151.111      0.000       5.597       5.744
-NUNT          -5.2059      0.090    -57.568      0.000      -5.383      -5.029
-diversity      1.2141      0.061     19.846      0.000       1.094       1.334
-UNT            0.0658      0.001     55.804      0.000       0.063       0.068
-==============================================================================
-Omnibus:                      131.079   Durbin-Watson:                   1.765
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):              229.385
-Skew:                          -0.048   Prob(JB):                     1.55e-50
-Kurtosis:                       3.710   Cond. No.                         167.
-==============================================================================
-
-Warnings:
-[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
-----------------------------------------------------
-formula:np.log(TNC + 1) ~ NUNT + diversity + UNT
-                            OLS Regression Results                            
-==============================================================================
-Dep. Variable:        np.log(TNC + 1)   R-squared:                       0.376
-Model:                            OLS   Adj. R-squared:                  0.376
-Method:                 Least Squares   F-statistic:                     2157.
-Date:                Thu, 15 Apr 2021   Prob (F-statistic):               0.00
-Time:                        15:54:13   Log-Likelihood:                -11096.
-No. Observations:               10719   AIC:                         2.220e+04
-Df Residuals:                   10715   BIC:                         2.223e+04
-Df Model:                           3                                         
-Covariance Type:            nonrobust                                         
-==============================================================================
-                 coef    std err          t      P>|t|      [0.025      0.975]
-------------------------------------------------------------------------------
-Intercept      5.6703      0.038    151.111      0.000       5.597       5.744
-NUNT          -5.2059      0.090    -57.568      0.000      -5.383      -5.029
-diversity      1.2141      0.061     19.846      0.000       1.094       1.334
-UNT            0.0658      0.001     55.804      0.000       0.063       0.068
-==============================================================================
-Omnibus:                      131.079   Durbin-Watson:                   1.765
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):              229.385
-Skew:                          -0.048   Prob(JB):                     1.55e-50
-Kurtosis:                       3.710   Cond. No.                         167.
-==============================================================================
-
-Warnings:
-[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
-----------------------------------------------------
-formula:np.log(ANC+1) ~ NUNT + persistence + diversity
-                            OLS Regression Results                            
-==============================================================================
-Dep. Variable:        np.log(ANC + 1)   R-squared:                       0.060
-Model:                            OLS   Adj. R-squared:                  0.059
-Method:                 Least Squares   F-statistic:                     226.1
-Date:                Thu, 15 Apr 2021   Prob (F-statistic):          2.96e-142
-Time:                        15:54:13   Log-Likelihood:                -8556.5
-No. Observations:               10719   AIC:                         1.712e+04
-Df Residuals:                   10715   BIC:                         1.715e+04
-Df Model:                           3                                         
-Covariance Type:            nonrobust                                         
-===============================================================================
-                  coef    std err          t      P>|t|      [0.025      0.975]
--------------------------------------------------------------------------------
-Intercept       2.3037      0.032     72.380      0.000       2.241       2.366
-NUNT           -1.3484      0.066    -20.334      0.000      -1.478      -1.218
-persistence    -9.6820      0.850    -11.396      0.000     -11.347      -8.017
-diversity       0.4366      0.047      9.291      0.000       0.344       0.529
-==============================================================================
-Omnibus:                      286.225   Durbin-Watson:                   1.790
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):              325.513
-Skew:                           0.370   Prob(JB):                     2.07e-71
-Kurtosis:                       3.425   Cond. No.                         187.
-==============================================================================
-
-Warnings:
-[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
-----------------------------------------------------
-formula:np.log(ANC+1) ~ persistence + diversity + UNT
-                            OLS Regression Results                            
-==============================================================================
-Dep. Variable:        np.log(ANC + 1)   R-squared:                       0.067
-Model:                            OLS   Adj. R-squared:                  0.067
-Method:                 Least Squares   F-statistic:                     258.3
-Date:                Thu, 15 Apr 2021   Prob (F-statistic):          7.48e-162
-Time:                        15:54:13   Log-Likelihood:                -8511.3
-No. Observations:               10719   AIC:                         1.703e+04
-Df Residuals:                   10715   BIC:                         1.706e+04
-Df Model:                           3                                         
-Covariance Type:            nonrobust                                         
-===============================================================================
-                  coef    std err          t      P>|t|      [0.025      0.975]
--------------------------------------------------------------------------------
-Intercept       2.2283      0.029     76.875      0.000       2.171       2.285
-persistence   -22.1730      1.089    -20.361      0.000     -24.308     -20.038
-diversity       0.8383      0.046     18.173      0.000       0.748       0.929
-UNT            -0.0250      0.001    -22.533      0.000      -0.027      -0.023
-==============================================================================
-Omnibus:                      267.827   Durbin-Watson:                   1.837
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):              305.381
-Skew:                           0.353   Prob(JB):                     4.87e-67
-Kurtosis:                       3.429   Cond. No.                     2.37e+03
+Omnibus:                      121.987   Durbin-Watson:                   1.828
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):              153.428
+Skew:                           0.181   Prob(JB):                     4.83e-34
+Kurtosis:                       3.460   Cond. No.                     2.37e+03
 ==============================================================================
 
 Warnings:
 [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
 [2] The condition number is large, 2.37e+03. This might indicate that there are
 strong multicollinearity or other numerical problems.
-----------------------------------------------------
-formula:np.log(ANC+1) ~ NUNT + persistence + UNT
-                            OLS Regression Results                            
-==============================================================================
-Dep. Variable:        np.log(ANC + 1)   R-squared:                       0.066
-Model:                            OLS   Adj. R-squared:                  0.066
-Method:                 Least Squares   F-statistic:                     254.0
-Date:                Thu, 15 Apr 2021   Prob (F-statistic):          2.94e-159
-Time:                        15:54:13   Log-Likelihood:                -8517.3
-No. Observations:               10719   AIC:                         1.704e+04
-Df Residuals:                   10715   BIC:                         1.707e+04
-Df Model:                           3                                         
-Covariance Type:            nonrobust                                         
-===============================================================================
-                  coef    std err          t      P>|t|      [0.025      0.975]
--------------------------------------------------------------------------------
-Intercept       2.7397      0.021    128.363      0.000       2.698       2.781
-NUNT           -1.2103      0.068    -17.831      0.000      -1.343      -1.077
-persistence   -18.6958      1.084    -17.248      0.000     -20.821     -16.571
-UNT            -0.0149      0.001    -12.871      0.000      -0.017      -0.013
-==============================================================================
-Omnibus:                      285.407   Durbin-Watson:                   1.824
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):              332.424
-Skew:                           0.359   Prob(JB):                     6.53e-73
-Kurtosis:                       3.478   Cond. No.                     2.36e+03
-==============================================================================
-
-Warnings:
-[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
-[2] The condition number is large, 2.36e+03. This might indicate that there are
-strong multicollinearity or other numerical problems.
-----------------------------------------------------
-formula:np.log(ANC+1) ~ NUNT + diversity + UNT
-                            OLS Regression Results                            
-==============================================================================
-Dep. Variable:        np.log(ANC + 1)   R-squared:                       0.050
-Model:                            OLS   Adj. R-squared:                  0.050
-Method:                 Least Squares   F-statistic:                     189.5
-Date:                Thu, 15 Apr 2021   Prob (F-statistic):          9.46e-120
-Time:                        15:54:13   Log-Likelihood:                -8608.4
-No. Observations:               10719   AIC:                         1.722e+04
-Df Residuals:                   10715   BIC:                         1.725e+04
-Df Model:                           3                                         
-Covariance Type:            nonrobust                                         
-==============================================================================
-                 coef    std err          t      P>|t|      [0.025      0.975]
-------------------------------------------------------------------------------
-Intercept      2.1579      0.030     72.528      0.000       2.100       2.216
-NUNT          -1.0506      0.072    -14.653      0.000      -1.191      -0.910
-diversity      0.5128      0.049     10.573      0.000       0.418       0.608
-UNT           -0.0047      0.001     -5.031      0.000      -0.007      -0.003
-==============================================================================
-Omnibus:                      233.056   Durbin-Watson:                   1.804
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):              270.086
-Skew:                           0.317   Prob(JB):                     2.25e-59
-Kurtosis:                       3.451   Cond. No.                         167.
-==============================================================================
-
-Warnings:
-[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
-----------------------------------------------------
-formula:np.log(ANC+1) ~ NUNT + diversity + UNT
-                            OLS Regression Results                            
-==============================================================================
-Dep. Variable:        np.log(ANC + 1)   R-squared:                       0.050
-Model:                            OLS   Adj. R-squared:                  0.050
-Method:                 Least Squares   F-statistic:                     189.5
-Date:                Thu, 15 Apr 2021   Prob (F-statistic):          9.46e-120
-Time:                        15:54:14   Log-Likelihood:                -8608.4
-No. Observations:               10719   AIC:                         1.722e+04
-Df Residuals:                   10715   BIC:                         1.725e+04
-Df Model:                           3                                         
-Covariance Type:            nonrobust                                         
-==============================================================================
-                 coef    std err          t      P>|t|      [0.025      0.975]
-------------------------------------------------------------------------------
-Intercept      2.1579      0.030     72.528      0.000       2.100       2.216
-NUNT          -1.0506      0.072    -14.653      0.000      -1.191      -0.910
-diversity      0.5128      0.049     10.573      0.000       0.418       0.608
-UNT           -0.0047      0.001     -5.031      0.000      -0.007      -0.003
-==============================================================================
-Omnibus:                      233.056   Durbin-Watson:                   1.804
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):              270.086
-Skew:                           0.317   Prob(JB):                     2.25e-59
-Kurtosis:                       3.451   Cond. No.                         167.
-==============================================================================
-
-Warnings:
-[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.

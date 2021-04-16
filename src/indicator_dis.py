@@ -157,11 +157,15 @@ def regression_analysis():
     data = pd.read_csv('data/author_topic_indicators.txt')
 
     data['NUNT'] = data['UNT'] / data['productivity']
-    data['persistence'] = data['MAX PNUOT'] / data['productivity']
+    data['consistency'] = data['MAX PNUOT'] / data['productivity']
 
-    rights = ['hindex', 'productivity', 'np.log(TNC + 1)', 'np.log(ANC+1)']
+    rights = ['hindex', 'productivity', 'np.log(TNC + 1)']
 
-    lefts = ['UNT', 'NUNT', 'diversity', 'persistence']
+    lefts = [[
+        'UNT',
+        'diversity',
+    ], ['diversity', 'consistency'], ['UNT', 'consistency'],
+             ['UNT', 'diversity', 'consistency']]
 
     # formula1 = 'hindex ~ UNT + NUNT + diversity + persistence + productivity'
 
@@ -172,21 +176,20 @@ def regression_analysis():
 
             formula = right + ' ~ '
 
-            parameters = list(set(lefts) - set([left]))
+            # parameters = list(set(lefts) - set([left]))
 
-            formula += ' + '.join(parameters)
+            formula += ' + '.join(left)
 
             result = formulate_ols(data, formula)
 
             results.extend(result)
 
-        formula = right + ' ~ ' + ' + '.join(parameters)
-        result = formulate_ols(data, formula)
+        # formula = right + ' ~ ' + ' + '.join(parameters)
+        # result = formulate_ols(data, formula)
 
         results.extend(result)
 
     open('data/result.txt', 'w').write('\n'.join(results))
-
 
     df1 = pd.DataFrame(data,
                        columns=[
@@ -201,12 +204,10 @@ def formulate_ols(data, formula):
 
     lines = []
 
-    lines.append('----------------------------------------------------')
-    lines.append('formula:'  + formula)
+    lines.append('\n\n----------------------------------------------------')
+    lines.append('formula:' + formula)
 
-    mod = smf.ols(
-        formula=formula,
-        data=data)
+    mod = smf.ols(formula=formula, data=data)
 
     res = mod.fit()
 
@@ -217,7 +218,6 @@ def formulate_ols(data, formula):
 
 if __name__ == "__main__":
 
-    variable_dis()
+    # variable_dis()
 
-    # regression_analysis()
-    
+    regression_analysis()
